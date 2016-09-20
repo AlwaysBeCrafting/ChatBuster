@@ -27,7 +27,7 @@ public class ChatGame extends ApplicationAdapter {
 		Entity e = new Entity();
 
 		e.add( new PositionComponent() );
-		e.add( new SpriteComponent( "badlogic.jpg" ));
+		e.add( new SpriteComponent( "fella.png" ));
 
 		engine.addEntity( e );
 	}
