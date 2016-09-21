@@ -24,12 +24,12 @@ public class ChatGame extends ApplicationAdapter {
 		engine.addSystem( SpriteRenderSystem.create() );
 
 
-		Entity e = new Entity();
+		Entity entity = new Entity();
 
-		e.add( new PositionComponent() );
-		e.add( new SpriteComponent( "fella.png" ));
+		entity.add( new PositionComponent() );
+		entity.add( new SpriteComponent( "fella.png" ));
 
-		engine.addEntity( e );
+		engine.addEntity( entity );
 	}
 
 	//--------------------------------------------------------------------------
