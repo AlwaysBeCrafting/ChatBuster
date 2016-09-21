@@ -1,7 +1,5 @@
 package stream.alwaysbecrafting.chatgame;
 
-import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.ApplicationAdapter;
 
 import stream.alwaysbecrafting.chatgame.ecs.component.PlayerControllerComponent;
@@ -10,30 +8,28 @@ import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
 import stream.alwaysbecrafting.chatgame.ecs.system.BackgroundRenderSystem;
 import stream.alwaysbecrafting.chatgame.ecs.system.PlayerInputSystem;
 import stream.alwaysbecrafting.chatgame.ecs.system.SpriteRenderSystem;
+import stream.alwaysbecrafting.ecs.GameEngine;
 
 //==============================================================================
 public class ChatGame extends ApplicationAdapter {
 	//--------------------------------------------------------------------------
 
-	Engine engine;
+	GameEngine engine;
 
 	//--------------------------------------------------------------------------
 
 	@Override public void create() {
-		engine = new Engine();
+		engine = new GameEngine();
 
-		engine.addSystem( new BackgroundRenderSystem() );
-		engine.addSystem( SpriteRenderSystem.create() );
-		engine.addSystem( PlayerInputSystem.create() );
+		engine.add( new BackgroundRenderSystem() );
+		engine.add( new SpriteRenderSystem() );
+		engine.add( new PlayerInputSystem() );
 
 
-		Entity entity = new Entity();
-
-		entity.add( new PositionComponent() );
-		entity.add( new SpriteComponent( "fella.png" ));
-		entity.add( new PlayerControllerComponent() );
-
-		engine.addEntity( entity );
+		engine.createEntity(
+				new PositionComponent(),
+				new SpriteComponent( "fella.png" ),
+				new PlayerControllerComponent() );
 	}
 
 	//--------------------------------------------------------------------------

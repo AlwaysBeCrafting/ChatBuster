@@ -1,10 +1,9 @@
 package stream.alwaysbecrafting.chatgame.ecs.component;
 
-import com.badlogic.ashley.core.Component;
 import com.badlogic.gdx.graphics.Texture;
 
 //==============================================================================
-public class SpriteComponent implements Component {
+public class SpriteComponent {
 	//--------------------------------------------------------------------------
 
 	public Texture sprite;

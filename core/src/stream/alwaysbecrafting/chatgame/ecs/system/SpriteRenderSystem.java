@@ -1,58 +1,41 @@
 package stream.alwaysbecrafting.chatgame.ecs.system;
 
-import com.badlogic.ashley.core.ComponentMapper;
-import com.badlogic.ashley.core.Engine;
-import com.badlogic.ashley.core.Entity;
-import com.badlogic.ashley.core.Family;
-import com.badlogic.ashley.systems.IteratingSystem;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.ecs.GameEngine;
+import stream.alwaysbecrafting.ecs.system.EntitySystem;
 
 //==============================================================================
-public class SpriteRenderSystem extends IteratingSystem {
+public class SpriteRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
-
-	private final ComponentMapper<SpriteComponent> SPRITE_MAPPER;
-	private final ComponentMapper<PositionComponent> POSITION_MAPPER;
 
 	private final SpriteBatch BATCHER = new SpriteBatch();
 
 	//--------------------------------------------------------------------------
 
-	public static SpriteRenderSystem create() {
-		Family family = Family
-				.all( SpriteComponent.class, PositionComponent.class )
-				.get();
-
-		return new SpriteRenderSystem( family );
+	public SpriteRenderSystem() {
+		includeAll(
+				SpriteComponent.class,
+				PositionComponent.class );
 	}
 
 	//--------------------------------------------------------------------------
 
-	private SpriteRenderSystem( Family family ) {
-		super( family );
-
-		SPRITE_MAPPER = ComponentMapper.getFor( SpriteComponent.class );
-		POSITION_MAPPER = ComponentMapper.getFor( PositionComponent.class );
-	}
-
-	//--------------------------------------------------------------------------
-
-	@Override public void update( float deltaTime ) {
+	@Override public void onUpdate( GameEngine engine, float deltaTime ) {
 		BATCHER.begin();
-		super.update( deltaTime );
+		super.onUpdate( engine, deltaTime );
 		BATCHER.end();
 	}
 
 	//--------------------------------------------------------------------------
 
-	@Override protected void processEntity( Entity entity, float deltaTime ) {
-		Texture sprite = SPRITE_MAPPER.get( entity ).sprite;
-		Vector2 position = POSITION_MAPPER.get( entity ).position;
+	@Override protected void onHandleEntity( GameEngine engine, long entityId, float deltaTime ) {
+		Texture sprite = engine.getComponent( entityId, SpriteComponent.class ).sprite;
+		Vector2 position = engine.getComponent( entityId, PositionComponent.class ).position;
 
 		BATCHER.draw(
 				sprite,
@@ -62,8 +45,8 @@ public class SpriteRenderSystem extends IteratingSystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override public void removedFromEngine( Engine e ) {
-		super.removedFromEngine( e );
+	@Override public void onStop( GameEngine engine ) {
+		super.onStop( engine );
 
 		BATCHER.dispose();
 	}
