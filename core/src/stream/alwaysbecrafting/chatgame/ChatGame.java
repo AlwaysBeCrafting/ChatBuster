@@ -4,9 +4,11 @@ import com.badlogic.ashley.core.Engine;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.ApplicationAdapter;
 
+import stream.alwaysbecrafting.chatgame.ecs.component.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
 import stream.alwaysbecrafting.chatgame.ecs.system.BackgroundRenderSystem;
+import stream.alwaysbecrafting.chatgame.ecs.system.PlayerInputSystem;
 import stream.alwaysbecrafting.chatgame.ecs.system.SpriteRenderSystem;
 
 //==============================================================================
@@ -22,12 +24,14 @@ public class ChatGame extends ApplicationAdapter {
 
 		engine.addSystem( new BackgroundRenderSystem() );
 		engine.addSystem( SpriteRenderSystem.create() );
+		engine.addSystem( PlayerInputSystem.create() );
 
 
 		Entity entity = new Entity();
 
 		entity.add( new PositionComponent() );
 		entity.add( new SpriteComponent( "fella.png" ));
+		entity.add( new PlayerControllerComponent() );
 
 		engine.addEntity( entity );
 	}
