@@ -5,14 +5,14 @@ import com.badlogic.gdx.Gdx;
 import stream.alwaysbecrafting.chatgame.ecs.component.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.ecs.GameEngine;
-import stream.alwaysbecrafting.ecs.system.EntitySystem;
+import stream.alwaysbecrafting.ecs.EntitySystem;
 
 //==============================================================================
 public class PlayerInputSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	public PlayerInputSystem() {
-		includeAll(
+		requireAll(
 				PlayerControllerComponent.class,
 				PositionComponent.class );
 	}
