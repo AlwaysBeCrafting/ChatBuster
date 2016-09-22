@@ -1,5 +1,7 @@
 package stream.alwaysbecrafting.chatgame.twitch;
 
+import com.google.common.base.Strings;
+
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -39,8 +41,8 @@ public class TwitchAuthenticator {
 	private final String CLIENT_SECRET;
 
 
-	private String auth_token = "";
-	private List<String> auth_scopes = Collections.emptyList();
+	private String access_token = "";
+	private List<String> scopes = Collections.emptyList();
 
 	//--------------------------------------------------------------------------
 
@@ -100,7 +102,7 @@ public class TwitchAuthenticator {
 
 	//--------------------------------------------------------------------------
 
-	public void setAuth( String uriFragment ) {
+	private void setAuth( String uriFragment ) {
 		if ( uriFragment ==  null ) return;
 		String[] pairs = uriFragment.split( "&" );
 		Map<String,String> map = new HashMap<>( pairs.length );
@@ -112,9 +114,21 @@ public class TwitchAuthenticator {
 
 		Log.i( uriFragment );
 
-		auth_token = map.get( "access_token" );
-		auth_scopes = Arrays.asList( map.get( "scope" ).split( "," ));
+		access_token = map.get( "access_token" );
+		scopes = Arrays.asList( map.get( "scope" ).split( "," ));
 	}
+
+	//--------------------------------------------------------------------------
+
+	public boolean hasToken() { return !Strings.isNullOrEmpty( access_token ); }
+
+	//--------------------------------------------------------------------------
+
+	public String getAccessToken() { return access_token; }
+
+	//--------------------------------------------------------------------------
+
+	public List<String> getScopes() { return scopes; }
 
 	//--------------------------------------------------------------------------
 }
