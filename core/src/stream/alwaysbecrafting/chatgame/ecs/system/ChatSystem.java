@@ -1,15 +1,20 @@
 package stream.alwaysbecrafting.chatgame.ecs.system;
 
+import com.badlogic.gdx.Gdx;
+
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.EnableCapHandler;
 import org.pircbotx.exception.IrcException;
-import org.pircbotx.hooks.Event;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
+import org.pircbotx.hooks.events.MessageEvent;
 
 import java.io.IOException;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
+import stream.alwaysbecrafting.chatgame.util.Colors;
 import stream.alwaysbecrafting.chatgame.util.Log;
 import stream.alwaysbecrafting.ecs.GameEngine;
 import stream.alwaysbecrafting.ecs.GameSystem;
@@ -21,13 +26,15 @@ public class ChatSystem extends GameSystem {
 	private final PircBotX BOT;
 	private final Listener MESSAGE_LISTENER;
 
+	private final Queue<MessageEvent> EVENTS = new ConcurrentLinkedQueue<>();
+
 	//--------------------------------------------------------------------------
 
 	public ChatSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
-			@Override public void onEvent( Event event ) throws Exception {
-				Log.d( event.toString() );
-				super.onEvent( event );
+			@Override public void onMessage( MessageEvent event ) throws Exception {
+				Log.d( event.getMessage() );
+				EVENTS.add( event );
 			}
 		};
 
@@ -51,16 +58,27 @@ public class ChatSystem extends GameSystem {
 	//--------------------------------------------------------------------------
 
 	@Override public void onStart( GameEngine engine ) {
-		try {
-			BOT.startBot();
-		} catch ( IOException | IrcException e ) {
-			e.printStackTrace();
-		}
+		new Thread( () -> {
+			try { BOT.startBot(); }
+			catch ( IOException | IrcException e ) { e.printStackTrace(); }
+		}).start();
 	}
 
 	//--------------------------------------------------------------------------
 
-	@Override public void onUpdate( GameEngine engine, float deltaTime ) {}
+	@Override public void onUpdate( GameEngine engine, float deltaTime ) {
+
+		while ( EVENTS.peek() != null ) {
+			int index = ( EVENTS.poll().getMessage().hashCode() ) & 15;
+			int color = Colors.Solarized.ALL[ index ];
+			Gdx.gl.glClearColor(
+					Colors.r( color ),
+					Colors.g( color ),
+					Colors.b( color ),
+					1 );
+		}
+
+	}
 
 	//--------------------------------------------------------------------------
 }
