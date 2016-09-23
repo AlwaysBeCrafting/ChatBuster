@@ -33,7 +33,7 @@ public class ChatSystem extends GameSystem {
 	public ChatSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
 			@Override public void onMessage( MessageEvent event ) throws Exception {
-				Log.d( event.getMessage() );
+				Log.i( event.getMessage() );
 				EVENTS.add( event );
 			}
 		};

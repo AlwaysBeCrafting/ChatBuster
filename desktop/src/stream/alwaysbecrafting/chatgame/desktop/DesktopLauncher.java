@@ -7,7 +7,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import stream.alwaysbecrafting.chatgame.ChatGame;
 import stream.alwaysbecrafting.chatgame.twitch.TwitchAuthenticator;
-import stream.alwaysbecrafting.chatgame.util.Log;
 
 //==============================================================================
 public class DesktopLauncher extends Application {
@@ -24,8 +23,6 @@ public class DesktopLauncher extends Application {
 
 		config.width = 1280;
 		config.height = 720;
-
-		Log.d( "\t" + authenticator.getAccessToken() );
 
 		new LwjglApplication( new ChatGame( authenticator.getAccessToken() ), config );
 	}

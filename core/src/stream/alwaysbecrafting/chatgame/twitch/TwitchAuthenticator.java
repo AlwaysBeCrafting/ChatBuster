@@ -2,7 +2,9 @@ package stream.alwaysbecrafting.chatgame.twitch;
 
 import com.google.common.base.Strings;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,7 +14,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Stream;
 
 import javafx.scene.Scene;
@@ -34,6 +35,7 @@ public class TwitchAuthenticator {
 	private static final String[] SCOPES = new String[] { "chat_login" };
 
 	private static final String KEY_PATH = "../../twitch-api.keys";
+	private static final String TOKEN_PATH = "../../token.key";
 
 
 	private final String USERNAME;
@@ -66,16 +68,29 @@ public class TwitchAuthenticator {
 			CLIENT_ID = "";
 			CLIENT_SECRET = "";
 		}
-
-
-		Log.d( "" + CLIENT_ID.length() );
-		Log.d( "" + CLIENT_SECRET.length() );
-		Log.d( "" + ( !Objects.equals( CLIENT_ID, CLIENT_SECRET )));
 	}
 
 	//--------------------------------------------------------------------------
 
 	public void requestAuthorization( Stage stage ) {
+		List<String> lines = new ArrayList<>( 2 );
+
+		try ( Stream<String> stream = Files.lines( Paths.get( TOKEN_PATH ))) {
+			stream.forEach( lines::add );
+
+		} catch ( IOException e ) { Log.i( "No token file" ); }
+
+
+		if ( lines.size() == 2 ) {
+			access_token = lines.get( 0 );
+			scopes = Arrays.asList( lines.get( 1 ).split( "," ));
+
+			stage.show();
+			stage.close();
+			return;
+		}
+
+
 		WebView browser = new WebView();
 
 		String url = String.format(
@@ -85,8 +100,21 @@ public class TwitchAuthenticator {
 				String.join( "+", SCOPES ));
 
 		browser.getEngine().getLoadWorker().stateProperty().addListener(( observable, oldValue, newValue ) -> {
-			String location = browser.getEngine().getLocation();
-			setAuth( URI.create( location ).getFragment() );
+			URI uri = URI.create( browser.getEngine().getLocation() );
+
+			if ( !Strings.isNullOrEmpty( uri.getFragment() )) {
+				setAuth( uri.getFragment() );
+
+				if ( hasToken() ) {
+					try ( PrintWriter out = new PrintWriter( TOKEN_PATH )) {
+						out.println( getAccessToken() );
+						out.println( String.join( ",", getScopes() ));
+
+					} catch ( FileNotFoundException e ) { e.printStackTrace(); }
+
+					stage.close();
+				}
+			}
 		} );
 
 
