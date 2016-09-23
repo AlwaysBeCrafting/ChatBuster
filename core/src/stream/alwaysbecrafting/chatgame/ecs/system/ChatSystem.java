@@ -41,10 +41,9 @@ public class ChatSystem extends GameSystem {
 		Configuration config = new Configuration.Builder()
 				.setAutoNickChange( false ) //Twitch doesn't support multiple users
 				.setOnJoinWhoEnabled( false ) //Twitch doesn't support WHO command
-				.setCapEnabled( true )
 				.addCapHandler( new EnableCapHandler( "twitch.tv/membership" )) //Twitch by default doesn't send JOIN, PART, and NAMES unless you request it, see https://github.com/justintv/Twitch-API/blob/master/IRC.md#membership
 
-				.setServer( "irc.chat.twitch.tv", 6667 )
+				.addServer( "irc.chat.twitch.tv", 6667 )
 				.setName( username.toLowerCase() )
 				.setServerPassword( "oauth:" + token )
 				.addListener( MESSAGE_LISTENER )
@@ -77,7 +76,6 @@ public class ChatSystem extends GameSystem {
 					Colors.b( color ),
 					1 );
 		}
-
 	}
 
 	//--------------------------------------------------------------------------
