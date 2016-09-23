@@ -21,8 +21,8 @@ public class DesktopLauncher extends Application {
 
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-		config.width = 1280;
-		config.height = 720;
+		config.width = 320;
+		config.height = 180;
 
 		new LwjglApplication( new ChatGame( authenticator.getAccessToken() ), config );
 	}

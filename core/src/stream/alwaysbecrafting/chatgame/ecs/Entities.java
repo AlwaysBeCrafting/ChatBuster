@@ -20,7 +20,7 @@ public abstract class Entities {
 		if ( event.getUser() != null ) username = event.getUser().getNick();
 
 		return engine.createEntity(
-				new PositionComponent( rand.nextFloat() * 1280, rand.nextFloat() * 720 ),
+				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
 				new SpriteComponent( "fella.png" ),
 				new ChatUserComponent( username, event.getMessage() ));
 	}
