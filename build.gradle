@@ -4,6 +4,7 @@ buildscript {
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         jcenter()
+
     }
     dependencies {
     }
@@ -48,7 +49,7 @@ project(":core") {
 
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
-        compile "org.pircbotx:pircbotx:2.0.1"
+        compile "org.pircbotx:pircbotx:2.2-SNAPSHOT"
 
         compile project(':ecs')
     }

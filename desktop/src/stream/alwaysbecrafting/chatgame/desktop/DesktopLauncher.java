@@ -3,19 +3,37 @@ package stream.alwaysbecrafting.chatgame.desktop;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
+import javafx.application.Application;
+import javafx.stage.Stage;
 import stream.alwaysbecrafting.chatgame.ChatGame;
+import stream.alwaysbecrafting.chatgame.twitch.TwitchAuthenticator;
+import stream.alwaysbecrafting.chatgame.util.Log;
 
 //==============================================================================
-public class DesktopLauncher {
+public class DesktopLauncher extends Application {
+	//--------------------------------------------------------------------------
+
+	static TwitchAuthenticator authenticator = new TwitchAuthenticator( "alwaysbecrafting" );
+
 	//--------------------------------------------------------------------------
 
 	public static void main( String[] arg ) {
+		launch( arg );
+
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
 		config.width = 1280;
 		config.height = 720;
 
-		new LwjglApplication( new ChatGame(), config );
+		Log.d( "\t" + authenticator.getAccessToken() );
+
+		new LwjglApplication( new ChatGame( authenticator.getAccessToken() ), config );
+	}
+
+	//--------------------------------------------------------------------------
+
+	@Override public void start( Stage primaryStage ) throws Exception {
+		authenticator.requestAuthorization( primaryStage );
 	}
 
 	//--------------------------------------------------------------------------

@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Vector2;
 
 import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.ecs.EntitySystem;
 import stream.alwaysbecrafting.ecs.GameEngine;
-import stream.alwaysbecrafting.ecs.system.EntitySystem;
 
 //==============================================================================
 public class SpriteRenderSystem extends EntitySystem {
@@ -18,7 +18,7 @@ public class SpriteRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	public SpriteRenderSystem() {
-		includeAll(
+		requireAll(
 				SpriteComponent.class,
 				PositionComponent.class );
 	}
