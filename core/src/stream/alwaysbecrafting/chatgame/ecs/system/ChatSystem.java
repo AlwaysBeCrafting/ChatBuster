@@ -4,6 +4,7 @@ import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.EnableCapHandler;
 import org.pircbotx.exception.IrcException;
+import org.pircbotx.hooks.Event;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
 import org.pircbotx.hooks.events.JoinEvent;
@@ -25,15 +26,24 @@ public class ChatSystem extends GameSystem {
 	private static final String JOIN_COMMAND = "!join";
 	private static final String CHANNEL = "#alwaysbecrafting";
 
+
 	private final PircBotX BOT;
 	private final Listener MESSAGE_LISTENER;
 
 	private final Queue<MessageEvent> JOIN_MESSAGES = new ConcurrentLinkedQueue<>();
 
+
+	private boolean hasJoined = false;
+
 	//--------------------------------------------------------------------------
 
 	public ChatSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
+			@Override public void onEvent( Event event ) throws Exception {
+				super.onEvent( event );
+				Log.d( event.toString() );
+			}
+
 			@Override public void onMessage( MessageEvent event ) {
 				if ( event.getMessage().startsWith( JOIN_COMMAND )) {
 					JOIN_MESSAGES.add( event );
@@ -42,10 +52,12 @@ public class ChatSystem extends GameSystem {
 
 			@Override public void onJoin( JoinEvent event ) {
 				if ( event.getChannel().getName().equals( CHANNEL )) {
-					event.getBot().send().message(
-							event.getChannel().getName(),
-							"Bot has joined channel, type '!join' to see your message in the log."
-					);
+					if ( !hasJoined ) {
+						event.getBot().send().message(
+								event.getChannel().getName(),
+								"Bot has joined channel, type '!join' to see your message in the log." );
+					}
+					hasJoined = true;
 				}
 			}
 		};
