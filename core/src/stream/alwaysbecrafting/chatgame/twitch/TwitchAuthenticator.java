@@ -75,9 +75,7 @@ public class TwitchAuthenticator {
 
 	//--------------------------------------------------------------------------
 
-	public void requestAuthorization() {
-		Stage stage = new Stage();
-
+	public void requestAuthorization( Stage stage ) {
 		WebView browser = new WebView();
 
 		String url = String.format(
@@ -89,7 +87,6 @@ public class TwitchAuthenticator {
 		browser.getEngine().getLoadWorker().stateProperty().addListener(( observable, oldValue, newValue ) -> {
 			String location = browser.getEngine().getLocation();
 			setAuth( URI.create( location ).getFragment() );
-
 		} );
 
 
