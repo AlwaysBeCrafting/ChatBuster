@@ -1,20 +1,19 @@
 package stream.alwaysbecrafting.chatgame.ecs.system;
 
-import com.badlogic.gdx.Gdx;
-
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.EnableCapHandler;
 import org.pircbotx.exception.IrcException;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
+import org.pircbotx.hooks.events.JoinEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 
 import java.io.IOException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import stream.alwaysbecrafting.chatgame.util.Colors;
+import stream.alwaysbecrafting.chatgame.ecs.Entities;
 import stream.alwaysbecrafting.chatgame.util.Log;
 import stream.alwaysbecrafting.ecs.GameEngine;
 import stream.alwaysbecrafting.ecs.GameSystem;
@@ -23,18 +22,31 @@ import stream.alwaysbecrafting.ecs.GameSystem;
 public class ChatSystem extends GameSystem {
 	//--------------------------------------------------------------------------
 
+	private static final String JOIN_COMMAND = "!join";
+	private static final String CHANNEL = "#alwaysbecrafting";
+
 	private final PircBotX BOT;
 	private final Listener MESSAGE_LISTENER;
 
-	private final Queue<MessageEvent> EVENTS = new ConcurrentLinkedQueue<>();
+	private final Queue<MessageEvent> JOIN_MESSAGES = new ConcurrentLinkedQueue<>();
 
 	//--------------------------------------------------------------------------
 
 	public ChatSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
-			@Override public void onMessage( MessageEvent event ) throws Exception {
-				Log.i( event.getMessage() );
-				EVENTS.add( event );
+			@Override public void onMessage( MessageEvent event ) {
+				if ( event.getMessage().startsWith( JOIN_COMMAND )) {
+					JOIN_MESSAGES.add( event );
+				}
+			}
+
+			@Override public void onJoin( JoinEvent event ) {
+				if ( event.getChannel().getName().equals( CHANNEL )) {
+					event.getBot().send().message(
+							event.getChannel().getName(),
+							"Bot has joined channel, type '!join' to see your message in the log."
+					);
+				}
 			}
 		};
 
@@ -48,7 +60,7 @@ public class ChatSystem extends GameSystem {
 				.setServerPassword( "oauth:" + token )
 				.addListener( MESSAGE_LISTENER )
 
-				.addAutoJoinChannel( "#alwaysbecrafting" )
+				.addAutoJoinChannel( CHANNEL )
 				.buildConfiguration();
 
 		BOT = new PircBotX( config );
@@ -66,15 +78,9 @@ public class ChatSystem extends GameSystem {
 	//--------------------------------------------------------------------------
 
 	@Override public void onUpdate( GameEngine engine, float deltaTime ) {
-
-		while ( EVENTS.peek() != null ) {
-			int index = ( EVENTS.poll().getMessage().hashCode() ) & 15;
-			int color = Colors.Solarized.ALL[ index ];
-			Gdx.gl.glClearColor(
-					Colors.r( color ),
-					Colors.g( color ),
-					Colors.b( color ),
-					1 );
+		while ( JOIN_MESSAGES.peek() != null ) {
+			Log.i( JOIN_MESSAGES.peek().getMessage() );
+			Entities.makeChatCharacter( engine, JOIN_MESSAGES.poll() );
 		}
 	}
 

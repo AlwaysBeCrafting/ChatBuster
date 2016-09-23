@@ -2,7 +2,6 @@ package stream.alwaysbecrafting.chatgame.ecs.system;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 
 import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
@@ -35,7 +34,7 @@ public class SpriteRenderSystem extends EntitySystem {
 
 	@Override protected void onHandleEntity( GameEngine engine, long entityId, float deltaTime ) {
 		Texture sprite = engine.getComponent( entityId, SpriteComponent.class ).sprite;
-		Vector2 position = engine.getComponent( entityId, PositionComponent.class ).position;
+		PositionComponent position = engine.getComponent( entityId, PositionComponent.class );
 
 		BATCHER.draw(
 				sprite,

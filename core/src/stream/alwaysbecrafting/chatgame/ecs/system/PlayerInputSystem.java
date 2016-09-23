@@ -25,16 +25,16 @@ public class PlayerInputSystem extends EntitySystem {
 
 
 		if ( Gdx.input.isKeyJustPressed( controller.key_up )) {
-			position.position.y += 20;
+			position.y += 20;
 		}
 		if ( Gdx.input.isKeyJustPressed( controller.key_down )) {
-			position.position.y -= 20;
+			position.y -= 20;
 		}
 		if ( Gdx.input.isKeyJustPressed( controller.key_right )) {
-			position.position.x += 20;
+			position.x += 20;
 		}
 		if ( Gdx.input.isKeyJustPressed( controller.key_left )) {
-			position.position.x -= 20;
+			position.x -= 20;
 		}
 	}
 
