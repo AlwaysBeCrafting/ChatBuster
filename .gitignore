@@ -73,3 +73,4 @@ Thumbs.db
 
 ## Twitch API key file, write your own API key here
 twitch-api.keys
+token.key
