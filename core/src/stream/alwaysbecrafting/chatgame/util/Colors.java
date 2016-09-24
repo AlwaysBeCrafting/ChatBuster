@@ -13,32 +13,55 @@ public abstract class Colors {
 	//--------------------------------------------------------------------------
 
 	public static float r( int color ) {
-		return (( color & 0x00_ff_00_00 ) >> 16 ) / 255f;
+		return rInt( color ) / 255f;
+	}
+
+	//--------------------------------------------------------------------------
+
+	public static int rInt( int color ) {
+		return ( color & 0x00_ff_00_00 ) >> 16;
 	}
 
 	//--------------------------------------------------------------------------
 
 	public static float g( int color ) {
-		return (( color & 0x00_00_ff_00 ) >> 8 ) / 255f;
+		return gInt( color ) / 255f;
+	}
+
+	//--------------------------------------------------------------------------
+
+	public static int gInt( int color ) {
+		return ( color & 0x00_00_ff_00 ) >> 8;
 	}
 
 	//--------------------------------------------------------------------------
 
 	public static float b( int color ) {
-		return (( color & 0x00_00_00_ff )) / 255f;
+		return bInt( color ) / 255f;
+	}
+
+	//--------------------------------------------------------------------------
+
+	public static int bInt( int color ) {
+		return color & 0x00_00_00_ff;
 	}
 
 	//--------------------------------------------------------------------------
 
 	public static float a( int color ) {
-		return (( color & 0xff_00_00_00 ) >> 24 ) / 255f;
+		return aInt( color ) / 255f;
+	}
+
+	//--------------------------------------------------------------------------
+
+	private static int aInt( int color ) {
+		return ( color & 0xff_00_00_00 ) >> 24;
 	}
 
 	//--------------------------------------------------------------------------
 
 	//==========================================================================
 	public static abstract class Solarized {
-
 		//----------------------------------------------------------------------
 
 		public static final int BASE03  = 0xff002b36;
