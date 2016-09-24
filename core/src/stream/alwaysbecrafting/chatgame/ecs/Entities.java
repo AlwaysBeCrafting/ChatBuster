@@ -21,7 +21,7 @@ public abstract class Entities {
 
 		return engine.createEntity(
 				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
-				new SpriteComponent( "fella.png" ),
+				new SpriteComponent( "guy-grey.png" ),
 				new ChatUserComponent( username, event.getMessage() ));
 	}
 

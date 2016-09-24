@@ -25,23 +25,23 @@ public abstract class Sprites {
 
 	private static final IntMap<String> GUYS = new IntMap<>( 16 );
 	static {
-		GUYS.put( BASE03, "fella-grey.png" );
-		GUYS.put( BASE02, "fella-grey.png" );
-		GUYS.put( BASE01, "fella-grey.png" );
-		GUYS.put( BASE00, "fella-grey.png" );
-		GUYS.put( BASE0,  "fella-grey.png" );
-		GUYS.put( BASE1,  "fella-grey.png" );
-		GUYS.put( BASE2,  "fella-grey.png" );
-		GUYS.put( BASE3,  "fella-grey.png" );
+		GUYS.put( BASE03, "guy-grey.png" );
+		GUYS.put( BASE02, "guy-grey.png" );
+		GUYS.put( BASE01, "guy-grey.png" );
+		GUYS.put( BASE00, "guy-grey.png" );
+		GUYS.put( BASE0,  "guy-grey.png" );
+		GUYS.put( BASE1,  "guy-grey.png" );
+		GUYS.put( BASE2,  "guy-grey.png" );
+		GUYS.put( BASE3,  "guy-grey.png" );
 
-		GUYS.put( YELLOW,  "fella-yellow.png"  );
-		GUYS.put( ORANGE,  "fella-orange.png"  );
-		GUYS.put( RED,     "fella-red.png"     );
-		GUYS.put( MAGENTA, "fella-magenta.png" );
-		GUYS.put( VIOLET,  "fella-violet.png"  );
-		GUYS.put( BLUE,    "fella-blue.png"    );
-		GUYS.put( CYAN,    "fella-cyan.png"    );
-		GUYS.put( GREEN,   "fella-green.png"   );
+		GUYS.put( YELLOW,  "guy-yellow.png"  );
+		GUYS.put( ORANGE,  "guy-orange.png"  );
+		GUYS.put( RED,     "guy-red.png"     );
+		GUYS.put( MAGENTA, "guy-magenta.png" );
+		GUYS.put( VIOLET,  "guy-violet.png"  );
+		GUYS.put( BLUE,    "guy-blue.png"    );
+		GUYS.put( CYAN,    "guy-cyan.png"    );
+		GUYS.put( GREEN,   "guy-green.png"   );
 	}
 
 	//--------------------------------------------------------------------------
