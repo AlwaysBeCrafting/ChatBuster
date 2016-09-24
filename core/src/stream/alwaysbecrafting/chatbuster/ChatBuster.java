@@ -1,18 +1,18 @@
-package stream.alwaysbecrafting.chatgame;
+package stream.alwaysbecrafting.chatbuster;
 
 import com.badlogic.gdx.ApplicationAdapter;
 
-import stream.alwaysbecrafting.chatgame.ecs.component.PlayerControllerComponent;
-import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
-import stream.alwaysbecrafting.chatgame.ecs.system.BackgroundRenderSystem;
-import stream.alwaysbecrafting.chatgame.ecs.system.ChatSystem;
-import stream.alwaysbecrafting.chatgame.ecs.system.PlayerInputSystem;
-import stream.alwaysbecrafting.chatgame.ecs.system.SpriteRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.component.PlayerControllerComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.system.BackgroundRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.ChatSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.PlayerInputSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.SpriteRenderSystem;
 import stream.alwaysbecrafting.ecs.GameEngine;
 
 //==============================================================================
-public class ChatGame extends ApplicationAdapter {
+public class ChatBuster extends ApplicationAdapter {
 	//--------------------------------------------------------------------------
 
 	private final String TOKEN;
@@ -21,7 +21,7 @@ public class ChatGame extends ApplicationAdapter {
 
 	//--------------------------------------------------------------------------
 
-	public ChatGame( String token ) {
+	public ChatBuster( String token ) {
 		TOKEN = token;
 	}
 

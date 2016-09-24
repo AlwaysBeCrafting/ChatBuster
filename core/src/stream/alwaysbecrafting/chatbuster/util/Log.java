@@ -1,7 +1,7 @@
-package stream.alwaysbecrafting.chatgame.util;
+package stream.alwaysbecrafting.chatbuster.util;
 
 
-import static stream.alwaysbecrafting.chatgame.util.Log.Level.*;
+import static stream.alwaysbecrafting.chatbuster.util.Log.Level.*;
 
 //==============================================================================
 public abstract class Log {

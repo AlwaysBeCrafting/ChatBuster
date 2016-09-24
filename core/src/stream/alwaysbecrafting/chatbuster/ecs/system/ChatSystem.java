@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatgame.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
@@ -14,8 +14,8 @@ import java.io.IOException;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import stream.alwaysbecrafting.chatgame.ecs.Entities;
-import stream.alwaysbecrafting.chatgame.util.Log;
+import stream.alwaysbecrafting.chatbuster.ecs.Entities;
+import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.ecs.GameEngine;
 import stream.alwaysbecrafting.ecs.GameSystem;
 

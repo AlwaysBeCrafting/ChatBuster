@@ -1,23 +1,23 @@
-package stream.alwaysbecrafting.chatgame.util;
+package stream.alwaysbecrafting.chatbuster.util;
 
 import com.badlogic.gdx.utils.IntMap;
 
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE0;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE00;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE01;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE02;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE03;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE1;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE2;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE3;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BLUE;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.CYAN;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.GREEN;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.MAGENTA;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.ORANGE;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.RED;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.VIOLET;
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.YELLOW;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE0;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE00;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE01;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE02;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE03;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE1;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE2;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE3;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BLUE;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.CYAN;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.GREEN;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.MAGENTA;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.ORANGE;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.RED;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.VIOLET;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.YELLOW;
 
 //==============================================================================
 public abstract class Sprites {

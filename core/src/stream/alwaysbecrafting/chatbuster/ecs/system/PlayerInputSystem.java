@@ -1,9 +1,9 @@
-package stream.alwaysbecrafting.chatgame.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system;
 
 import com.badlogic.gdx.Gdx;
 
-import stream.alwaysbecrafting.chatgame.ecs.component.PlayerControllerComponent;
-import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.PlayerControllerComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.ecs.GameEngine;
 import stream.alwaysbecrafting.ecs.EntitySystem;
 

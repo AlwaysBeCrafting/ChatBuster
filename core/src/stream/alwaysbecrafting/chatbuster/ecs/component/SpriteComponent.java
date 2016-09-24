@@ -1,17 +1,17 @@
-package stream.alwaysbecrafting.chatgame.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component;
+
+import com.badlogic.gdx.graphics.Texture;
 
 //==============================================================================
-public class ChatUserComponent {
+public class SpriteComponent {
 	//--------------------------------------------------------------------------
 
-	public String username;
-	public String message;
+	public Texture sprite;
 
 	//--------------------------------------------------------------------------
 
-	public ChatUserComponent( String username, String message ) {
-		this.username = username;
-		this.message = message;
+	public SpriteComponent( String path ) {
+		sprite = new Texture( path );
 	}
 
 	//--------------------------------------------------------------------------

@@ -1,10 +1,10 @@
-package stream.alwaysbecrafting.chatgame.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
 import stream.alwaysbecrafting.ecs.EntitySystem;
 import stream.alwaysbecrafting.ecs.GameEngine;
 

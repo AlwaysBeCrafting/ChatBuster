@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatgame.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component;
 
 //==============================================================================
 public class PositionComponent {

@@ -1,13 +1,13 @@
-package stream.alwaysbecrafting.chatgame.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
-import stream.alwaysbecrafting.chatgame.util.Colors;
+import stream.alwaysbecrafting.chatbuster.util.Colors;
 import stream.alwaysbecrafting.ecs.GameEngine;
 import stream.alwaysbecrafting.ecs.GameSystem;
 
-import static stream.alwaysbecrafting.chatgame.util.Colors.Solarized.BASE3;
+import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE3;
 
 //==============================================================================
 public class BackgroundRenderSystem extends GameSystem {

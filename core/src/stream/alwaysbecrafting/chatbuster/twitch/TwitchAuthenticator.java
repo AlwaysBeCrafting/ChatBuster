@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatgame.twitch;
+package stream.alwaysbecrafting.chatbuster.twitch;
 
 import com.google.common.base.Strings;
 
@@ -19,7 +19,7 @@ import java.util.stream.Stream;
 import javafx.scene.Scene;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import stream.alwaysbecrafting.chatgame.util.Log;
+import stream.alwaysbecrafting.chatbuster.util.Log;
 
 //==============================================================================
 public class TwitchAuthenticator {

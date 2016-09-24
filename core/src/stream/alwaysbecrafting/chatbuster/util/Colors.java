@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatgame.util;
+package stream.alwaysbecrafting.chatbuster.util;
 
 //==============================================================================
 public abstract class Colors {

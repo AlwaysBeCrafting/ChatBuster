@@ -1,12 +1,12 @@
-package stream.alwaysbecrafting.chatgame.desktop;
+package stream.alwaysbecrafting.chatbuster.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import stream.alwaysbecrafting.chatgame.ChatGame;
-import stream.alwaysbecrafting.chatgame.twitch.TwitchAuthenticator;
+import stream.alwaysbecrafting.chatbuster.ChatBuster;
+import stream.alwaysbecrafting.chatbuster.twitch.TwitchAuthenticator;
 
 //==============================================================================
 public class DesktopLauncher extends Application {
@@ -24,7 +24,7 @@ public class DesktopLauncher extends Application {
 		config.width = 320;
 		config.height = 180;
 
-		new LwjglApplication( new ChatGame( authenticator.getAccessToken() ), config );
+		new LwjglApplication( new ChatBuster( authenticator.getAccessToken() ), config );
 	}
 
 	//--------------------------------------------------------------------------

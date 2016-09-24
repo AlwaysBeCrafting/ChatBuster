@@ -1,12 +1,12 @@
-package stream.alwaysbecrafting.chatgame.ecs;
+package stream.alwaysbecrafting.chatbuster.ecs;
 
 import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Random;
 
-import stream.alwaysbecrafting.chatgame.ecs.component.ChatUserComponent;
-import stream.alwaysbecrafting.chatgame.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.chatgame.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.ChatUserComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
 import stream.alwaysbecrafting.ecs.GameEngine;
 
 //==============================================================================
