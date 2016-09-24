@@ -70,7 +70,14 @@ build/
 Thumbs.db
 
 
+## Art source files
+/art
+
+
 
 ## Twitch API key file, write your own API key here
 twitch-api.keys
+
+## Token file that the game saves to after authenticating
 token.key
+
