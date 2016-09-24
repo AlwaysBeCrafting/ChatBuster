@@ -38,7 +38,7 @@ public class ChatGame extends ApplicationAdapter {
 
 		engine.createEntity(
 				new PositionComponent(),
-				new SpriteComponent( "fella.png" ),
+				new SpriteComponent( "guy-grey.png" ),
 				new PlayerControllerComponent() );
 	}
 
