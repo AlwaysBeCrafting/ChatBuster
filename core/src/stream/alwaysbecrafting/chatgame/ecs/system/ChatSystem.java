@@ -4,9 +4,9 @@ import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
 import org.pircbotx.cap.EnableCapHandler;
 import org.pircbotx.exception.IrcException;
-import org.pircbotx.hooks.Event;
 import org.pircbotx.hooks.Listener;
 import org.pircbotx.hooks.ListenerAdapter;
+import org.pircbotx.hooks.events.ConnectEvent;
 import org.pircbotx.hooks.events.JoinEvent;
 import org.pircbotx.hooks.events.MessageEvent;
 
@@ -39,9 +39,8 @@ public class ChatSystem extends GameSystem {
 
 	public ChatSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
-			@Override public void onEvent( Event event ) throws Exception {
-				super.onEvent( event );
-				Log.d( event.toString() );
+			@Override public void onConnect( ConnectEvent event ) {
+				event.getBot().sendRaw().rawLine( "CAP REQ :twitch.tv/tags" );
 			}
 
 			@Override public void onMessage( MessageEvent event ) {
