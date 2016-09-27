@@ -15,12 +15,14 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
-import stream.alwaysbecrafting.chatbuster.util.Log;
+import stream.alwaysbecrafting.chatbuster.ecs.component.ChatPlayerComponent;
+import stream.alwaysbecrafting.flare.Entity;
+import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
-import stream.alwaysbecrafting.flare.GameSystem;
+import stream.alwaysbecrafting.flare.StateMachine;
 
 //==============================================================================
-public class ChatSystem extends GameSystem {
+public class ChatPlayerSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	private static final String JOIN_COMMAND = "!join";
@@ -37,7 +39,7 @@ public class ChatSystem extends GameSystem {
 
 	//--------------------------------------------------------------------------
 
-	public ChatSystem( String username, String token ) {
+	public ChatPlayerSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
 			@Override public void onConnect( ConnectEvent event ) {
 				event.getBot().sendRaw().rawLine( "CAP REQ :twitch.tv/tags" );
@@ -89,10 +91,18 @@ public class ChatSystem extends GameSystem {
 	//--------------------------------------------------------------------------
 
 	@Override public void onUpdate( GameEngine engine, float deltaTime ) {
-		while ( JOIN_MESSAGES.peek() != null ) {
-			Log.i( JOIN_MESSAGES.peek().getMessage() );
-			Entities.makeChatCharacter( engine, JOIN_MESSAGES.poll() );
-		}
+		JOIN_MESSAGES.stream()
+				.map( Entities::makeChatCharacter )
+				.forEach( engine::add );
+		super.onUpdate( engine, deltaTime );
+	}
+
+	//--------------------------------------------------------------------------
+
+	@Override protected void onHandleEntity( Entity entity, float deltaTime ) {
+		StateMachine stateMachine = entity.get( ChatPlayerComponent.class ).stateMachine;
+
+		stateMachine.update( deltaTime );
 	}
 
 	//--------------------------------------------------------------------------

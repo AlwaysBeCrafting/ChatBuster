@@ -5,51 +5,58 @@ import stream.alwaysbecrafting.flare.State;
 import stream.alwaysbecrafting.flare.StateMachine;
 
 //==============================================================================
-public class ChatPlayerStateComponent {
+public class ChatPlayerComponent {
 	//--------------------------------------------------------------------------
 
-	public StateMachine machine;
+	public String username;
+	public String message;
+
+	public StateMachine stateMachine;
 
 	//--------------------------------------------------------------------------
 
-	public ChatPlayerStateComponent() {
-		machine = new StateMachine();
+	public ChatPlayerComponent( String username, String message ) {
+		this.username = username;
+		this.message = message;
 
 
 
-		machine.add( "zorpIn", new State() {
+		stateMachine = new StateMachine();
+
+
+		stateMachine.add( "zorpIn", new State() {
 
 		} );
 
-		machine.add( "stand", new State() {
+		stateMachine.add( "stand", new State() {
 			@Override public void onUpdate( double deltaTime ) {
 				Log.d( "standing by..." );
 			}
 		} );
 
-		machine.add( "shoot", new State() {
+		stateMachine.add( "shoot", new State() {
 
 		} );
 
-		machine.add( "jump", new State() {
+		stateMachine.add( "jump", new State() {
 
 		} );
 
-		machine.add( "fall", new State() {
+		stateMachine.add( "fall", new State() {
 
 		} );
 
-		machine.add( "takeDamage", new State() {
+		stateMachine.add( "takeDamage", new State() {
 
 		} );
 
-		machine.add( "zorpOut", new State() {
+		stateMachine.add( "zorpOut", new State() {
 
 		} );
 
 
 
-		machine.change( "stand" );
+		stateMachine.change( "stand" );
 	}
 
 	//--------------------------------------------------------------------------
