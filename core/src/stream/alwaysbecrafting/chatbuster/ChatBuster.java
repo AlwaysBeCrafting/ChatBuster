@@ -2,14 +2,11 @@ package stream.alwaysbecrafting.chatbuster;
 
 import com.badlogic.gdx.ApplicationAdapter;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.PlayerControllerComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.system.BackgroundRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.ChatSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.PlayerInputSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.SpriteRenderSystem;
-import stream.alwaysbecrafting.ecs.GameEngine;
+import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
 public class ChatBuster extends ApplicationAdapter {
@@ -34,12 +31,6 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem() );
 		engine.add( new PlayerInputSystem() );
-
-
-		engine.createEntity(
-				new PositionComponent(),
-				new SpriteComponent( "guy-grey.png" ),
-				new PlayerControllerComponent() );
 	}
 
 	//--------------------------------------------------------------------------
