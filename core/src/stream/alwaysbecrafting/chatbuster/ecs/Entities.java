@@ -4,6 +4,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Random;
 
+import stream.alwaysbecrafting.chatbuster.ecs.component.ChatPlayerStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.ChatUserComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
@@ -23,7 +24,8 @@ public abstract class Entities {
 		return engine.add( new Entity(
 				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
 				new SpriteComponent( "guy-grey.png" ),
-				new ChatUserComponent( username, event.getMessage() )));
+				new ChatUserComponent( username, event.getMessage() ),
+				new ChatPlayerStateComponent() ));
 	}
 
 	//--------------------------------------------------------------------------
