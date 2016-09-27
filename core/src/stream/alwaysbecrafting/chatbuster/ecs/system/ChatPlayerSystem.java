@@ -94,6 +94,7 @@ public class ChatPlayerSystem extends EntitySystem {
 		JOIN_MESSAGES.stream()
 				.map( Entities::makeChatCharacter )
 				.forEach( engine::add );
+		JOIN_MESSAGES.clear();
 		super.onUpdate( engine, deltaTime );
 	}
 
