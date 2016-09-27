@@ -16,8 +16,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
 import stream.alwaysbecrafting.chatbuster.util.Log;
-import stream.alwaysbecrafting.ecs.GameEngine;
-import stream.alwaysbecrafting.ecs.GameSystem;
+import stream.alwaysbecrafting.flare.GameEngine;
+import stream.alwaysbecrafting.flare.GameSystem;
 
 //==============================================================================
 public class ChatSystem extends GameSystem {

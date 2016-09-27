@@ -5,8 +5,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
-import stream.alwaysbecrafting.ecs.EntitySystem;
-import stream.alwaysbecrafting.ecs.GameEngine;
+import stream.alwaysbecrafting.flare.Entity;
+import stream.alwaysbecrafting.flare.EntitySystem;
+import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
 public class SpriteRenderSystem extends EntitySystem {
@@ -32,9 +33,9 @@ public class SpriteRenderSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override protected void onHandleEntity( GameEngine engine, long entityId, float deltaTime ) {
-		Texture sprite = engine.getComponent( entityId, SpriteComponent.class ).sprite;
-		PositionComponent position = engine.getComponent( entityId, PositionComponent.class );
+	@Override protected void onHandleEntity( Entity entity, float deltaTime ) {
+		Texture           sprite   = entity.get( SpriteComponent.class   ).sprite;
+		PositionComponent position = entity.get( PositionComponent.class );
 
 		BATCHER.draw(
 				sprite,

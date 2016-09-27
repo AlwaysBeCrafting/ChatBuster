@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.ecs.GameEngine;
-import stream.alwaysbecrafting.ecs.EntitySystem;
+import stream.alwaysbecrafting.flare.Entity;
+import stream.alwaysbecrafting.flare.EntitySystem;
 
 //==============================================================================
 public class PlayerInputSystem extends EntitySystem {
@@ -19,9 +19,9 @@ public class PlayerInputSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override protected void onHandleEntity( GameEngine engine, long entityId, float deltaTime ) {
-		PlayerControllerComponent controller = engine.getComponent( entityId, PlayerControllerComponent.class );
-		PositionComponent position = engine.getComponent( entityId, PositionComponent.class );
+	@Override protected void onHandleEntity( Entity entity, float deltaTime ) {
+		PlayerControllerComponent controller = entity.get( PlayerControllerComponent.class );
+		PositionComponent         position   = entity.get( PositionComponent.class         );
 
 
 		if ( Gdx.input.isKeyJustPressed( controller.key_up )) {

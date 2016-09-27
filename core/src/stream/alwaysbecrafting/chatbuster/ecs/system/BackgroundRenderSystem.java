@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
 import stream.alwaysbecrafting.chatbuster.util.Colors;
-import stream.alwaysbecrafting.ecs.GameEngine;
-import stream.alwaysbecrafting.ecs.GameSystem;
+import stream.alwaysbecrafting.flare.GameEngine;
+import stream.alwaysbecrafting.flare.GameSystem;
 
 import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE3;
 
