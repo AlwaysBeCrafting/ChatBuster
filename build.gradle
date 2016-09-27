@@ -51,7 +51,7 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "org.pircbotx:pircbotx:2.2-SNAPSHOT"
 
-        compile project(':ecs')
+        compile project(':flare')
     }
 }
 
