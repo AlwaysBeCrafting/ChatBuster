@@ -1,6 +1,5 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component;
 
-import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.State;
 import stream.alwaysbecrafting.flare.StateMachine;
 
@@ -11,7 +10,8 @@ public class ChatPlayerComponent {
 	public String username;
 	public String message;
 
-	public StateMachine stateMachine;
+	public StateMachine characterState;
+	public StateMachine gunState;
 
 	//--------------------------------------------------------------------------
 
@@ -21,42 +21,34 @@ public class ChatPlayerComponent {
 
 
 
-		stateMachine = new StateMachine();
+		characterState = new StateMachine();
+		gunState = new StateMachine();
 
 
-		stateMachine.add( "zorpIn", new State() {
+		characterState.add( "zorpIn", new State() {} );
 
+		characterState.add( "stand", new State() {
+			@Override public void onUpdate( double deltaTime ) {}
 		} );
 
-		stateMachine.add( "stand", new State() {
-			@Override public void onUpdate( double deltaTime ) {
-				Log.d( "standing by..." );
-			}
-		} );
+		characterState.add( "jump", new State() {} );
 
-		stateMachine.add( "shoot", new State() {
+		characterState.add( "fall", new State() {} );
 
-		} );
+		characterState.add( "takeDamage", new State() {} );
 
-		stateMachine.add( "jump", new State() {
-
-		} );
-
-		stateMachine.add( "fall", new State() {
-
-		} );
-
-		stateMachine.add( "takeDamage", new State() {
-
-		} );
-
-		stateMachine.add( "zorpOut", new State() {
-
-		} );
+		characterState.add( "zorpOut", new State() {} );
 
 
+		gunState.add( "idle", new State() {} );
 
-		stateMachine.change( "stand" );
+		gunState.add( "charge", new State() {} );
+
+		gunState.add( "shoot", new State() {} );
+
+
+		characterState.change( "stand" );
+		gunState.change( "idle" );
 	}
 
 	//--------------------------------------------------------------------------

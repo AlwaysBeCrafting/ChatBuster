@@ -101,9 +101,11 @@ public class ChatPlayerSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, float deltaTime ) {
-		StateMachine stateMachine = entity.get( ChatPlayerComponent.class ).stateMachine;
+		StateMachine characterState = entity.get( ChatPlayerComponent.class ).characterState;
+		StateMachine gunState = entity.get( ChatPlayerComponent.class ).characterState;
 
-		stateMachine.update( deltaTime );
+		characterState.update( deltaTime );
+		gunState.update( deltaTime );
 	}
 
 	//--------------------------------------------------------------------------
