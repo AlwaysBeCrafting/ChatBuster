@@ -15,14 +15,11 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
-import stream.alwaysbecrafting.chatbuster.ecs.component.ChatPlayerComponent;
-import stream.alwaysbecrafting.flare.Entity;
-import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
-import stream.alwaysbecrafting.flare.StateMachine;
+import stream.alwaysbecrafting.flare.GameSystem;
 
 //==============================================================================
-public class ChatPlayerSystem extends EntitySystem {
+public class ChatControlSystem extends GameSystem {
 	//--------------------------------------------------------------------------
 
 	private static final String JOIN_COMMAND = "!join";
@@ -39,7 +36,7 @@ public class ChatPlayerSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	public ChatPlayerSystem( String username, String token ) {
+	public ChatControlSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
 			@Override public void onConnect( ConnectEvent event ) {
 				event.getBot().sendRaw().rawLine( "CAP REQ :twitch.tv/tags" );
@@ -90,22 +87,12 @@ public class ChatPlayerSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override public void onUpdate( GameEngine engine, float deltaTime ) {
+	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
 		JOIN_MESSAGES.stream()
 				.map( Entities::makeChatCharacter )
 				.forEach( engine::add );
 		JOIN_MESSAGES.clear();
 		super.onUpdate( engine, deltaTime );
-	}
-
-	//--------------------------------------------------------------------------
-
-	@Override protected void onHandleEntity( Entity entity, float deltaTime ) {
-		StateMachine characterState = entity.get( ChatPlayerComponent.class ).characterState;
-		StateMachine gunState = entity.get( ChatPlayerComponent.class ).characterState;
-
-		characterState.update( deltaTime );
-		gunState.update( deltaTime );
 	}
 
 	//--------------------------------------------------------------------------
