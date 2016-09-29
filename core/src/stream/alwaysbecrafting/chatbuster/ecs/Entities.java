@@ -11,6 +11,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.CollisionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.ColorFillComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.VelocityComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
 
@@ -25,12 +26,16 @@ public abstract class Entities {
 		if ( event.getUser() != null ) username = event.getUser().getNick();
 
 		return new Entity(
-				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
-				new SpriteComponent( "guy-grey.png" ),
-				new ChatCharacterComponent( username, event.getMessage() ),
-				new BoundingBoxComponent( 7, 9, 26, 32 ),
 				new AllyStateComponent(),
-				new CollisionComponent( 0b1 ));
+				new ChatCharacterComponent( username, event.getMessage() ),
+
+				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
+				new VelocityComponent(),
+				new BoundingBoxComponent( 7, 9, 26, 32 ),
+
+				new CollisionComponent( 0b1 ),
+
+				new SpriteComponent( "guy-grey.png" ));
 	}
 
 	//--------------------------------------------------------------------------
@@ -38,7 +43,7 @@ public abstract class Entities {
 	public static Entity makeWall( int left, int bottom, int right, int top ) {
 		return new Entity(
 				new BoundingBoxComponent( left, bottom, right, top ),
-				new ColorFillComponent(),
+				new ColorFillComponent( 0xff000044 ),
 				new CollisionComponent( 0b1 ));
 	}
 
