@@ -6,7 +6,7 @@ import java.util.Random;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.AllyStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.BoundingBoxComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.ChatPlayerComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.ChatCharacterComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.CollisionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.ColorFillComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
@@ -27,7 +27,7 @@ public abstract class Entities {
 		return new Entity(
 				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
 				new SpriteComponent( "guy-grey.png" ),
-				new ChatPlayerComponent( username, event.getMessage() ),
+				new ChatCharacterComponent( username, event.getMessage() ),
 				new BoundingBoxComponent( 7, 9, 26, 32 ),
 				new AllyStateComponent(),
 				new CollisionComponent( 0b1 ));

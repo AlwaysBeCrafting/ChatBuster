@@ -1,7 +1,7 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component;
 
 //==============================================================================
-public class ChatPlayerComponent {
+public class ChatCharacterComponent {
 	//--------------------------------------------------------------------------
 
 	public String username;
@@ -9,7 +9,7 @@ public class ChatPlayerComponent {
 
 	//--------------------------------------------------------------------------
 
-	public ChatPlayerComponent( String username, String message ) {
+	public ChatCharacterComponent( String username, String message ) {
 		this.username = username;
 		this.message = message;
 	}
