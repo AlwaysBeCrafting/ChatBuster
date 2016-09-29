@@ -1,5 +1,6 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component;
 
+import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.State;
 import stream.alwaysbecrafting.flare.StateMachine;
 
@@ -51,6 +52,7 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onUpdate( double deltaTime ) {
+			Log.d( "jumping" );
 			if ( velocityComp.v < 0 ) characterState.change( "fall", velocityComp );
 		}
 
@@ -79,6 +81,13 @@ public class AllyStateComponent {
 
 		@Override public void onEnter( Object... params ) {
 			Integer strength = (Integer)params[0];
+		}
+
+		//----------------------------------------------------------------------
+
+		@Override public void onUpdate( double deltaTime ) {
+			Log.d( "shooting" );
+			gunState.change( "idle" );
 		}
 
 		//----------------------------------------------------------------------

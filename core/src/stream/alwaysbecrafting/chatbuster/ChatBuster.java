@@ -3,6 +3,7 @@ package stream.alwaysbecrafting.chatbuster;
 import com.badlogic.gdx.ApplicationAdapter;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
+import stream.alwaysbecrafting.chatbuster.ecs.system.AllyStateSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.BackgroundRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.BoxRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.PlayerInputSystem;
@@ -28,11 +29,11 @@ public class ChatBuster extends ApplicationAdapter {
 	@Override public void create() {
 		engine = new GameEngine();
 
-//		engine.add( new ChatControlSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem() );
 		engine.add( new PlayerInputSystem() );
 		engine.add( new BoxRenderSystem() );
+		engine.add( new AllyStateSystem() );
 
 		engine.add( Entities.makePlayerCharacter() );
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
