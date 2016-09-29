@@ -40,15 +40,14 @@ public class BoxRenderSystem extends EntitySystem {
 		BoundingBoxComponent boundsComp = entity.get( BoundingBoxComponent.class );
 		ColorFillComponent colorComp = entity.get( ColorFillComponent.class );
 
-		final int x = boundsComp.left;
-		final int y = boundsComp.bottom;
-		final int w = boundsComp.right - x;
-		final int h = boundsComp.top - y;
-
 		Color.argb8888ToColor( color, colorComp.color );
 
 		renderer.setColor( color );
-		renderer.rect( x, y, w, h );
+		renderer.rect(
+				boundsComp.rect.x,
+				boundsComp.rect.y,
+				boundsComp.rect.width,
+				boundsComp.rect.height );
 	}
 
 	//--------------------------------------------------------------------------

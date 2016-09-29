@@ -30,7 +30,9 @@ public class AllyStateComponent {
 
 		gunState.add( "idle", new State() );
 
-		gunState.add( "charge", new State() );
+		gunState.add( "charge", new State() {
+			private int chargeLevel;
+		} );
 
 		gunState.add( "shoot", new State() );
 
