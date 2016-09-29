@@ -19,7 +19,7 @@ public class PlayerInputSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override protected void onHandleEntity( Entity entity, float deltaTime ) {
+	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
 		PlayerControllerComponent controller = entity.get( PlayerControllerComponent.class );
 		PositionComponent         position   = entity.get( PositionComponent.class         );
 

@@ -1,17 +1,19 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component;
 
 //==============================================================================
-public class ChatUserComponent {
+public class ColorFillComponent {
 	//--------------------------------------------------------------------------
 
-	public String username;
-	public String message;
+	public int color = 0xffffffff;
 
 	//--------------------------------------------------------------------------
 
-	public ChatUserComponent( String username, String message ) {
-		this.username = username;
-		this.message = message;
+	public ColorFillComponent() {}
+
+	//--------------------------------------------------------------------------
+
+	public ColorFillComponent( int color ) {
+		this.color = color;
 	}
 
 	//--------------------------------------------------------------------------
