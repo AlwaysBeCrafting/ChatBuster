@@ -8,6 +8,10 @@ public class BoundingBoxComponent {
 
 	//--------------------------------------------------------------------------
 
+	public BoundingBoxComponent() {}
+
+	//--------------------------------------------------------------------------
+
 	public BoundingBoxComponent( int left, int top, int right, int bottom ) {
 		this.left = left;
 		this.top = top;

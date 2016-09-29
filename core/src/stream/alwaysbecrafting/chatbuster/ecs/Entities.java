@@ -4,14 +4,15 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Random;
 
+import stream.alwaysbecrafting.chatbuster.ecs.component.AllyStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.BoundingBoxComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.ChatUserComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.ChatPlayerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.CollisionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.ColorFillComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
 import stream.alwaysbecrafting.flare.Entity;
-import stream.alwaysbecrafting.flare.GameEngine;
+
 
 //==============================================================================
 public abstract class Entities {
@@ -26,8 +27,9 @@ public abstract class Entities {
 		return new Entity(
 				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
 				new SpriteComponent( "guy-grey.png" ),
-				new ChatUserComponent( username, event.getMessage() ),
+				new ChatPlayerComponent( username, event.getMessage() ),
 				new BoundingBoxComponent( 7, 9, 26, 32 ),
+				new AllyStateComponent(),
 				new CollisionComponent( 0b1 ));
 	}
 

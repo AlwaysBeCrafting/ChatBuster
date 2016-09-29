@@ -25,7 +25,7 @@ public class SpriteRenderSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override public void onUpdate( GameEngine engine, float deltaTime ) {
+	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
 		BATCHER.begin();
 		super.onUpdate( engine, deltaTime );
 		BATCHER.end();
@@ -33,7 +33,7 @@ public class SpriteRenderSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override protected void onHandleEntity( Entity entity, float deltaTime ) {
+	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
 		Texture           sprite   = entity.get( SpriteComponent.class   ).sprite;
 		PositionComponent position = entity.get( PositionComponent.class );
 

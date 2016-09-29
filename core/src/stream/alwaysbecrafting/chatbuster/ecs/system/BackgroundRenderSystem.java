@@ -25,7 +25,7 @@ public class BackgroundRenderSystem extends GameSystem {
 
 	//--------------------------------------------------------------------------
 
-	@Override public void onUpdate( GameEngine engine, float deltaTime ) {
+	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
 		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT );
 	}
 
