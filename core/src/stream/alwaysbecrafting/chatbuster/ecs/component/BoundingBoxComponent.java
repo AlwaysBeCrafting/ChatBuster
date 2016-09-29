@@ -4,7 +4,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.component;
 public class BoundingBoxComponent {
 	//--------------------------------------------------------------------------
 
-	public int left, top, right, bottom;
+	public int left, bottom, right, top;
 
 	//--------------------------------------------------------------------------
 
@@ -12,11 +12,11 @@ public class BoundingBoxComponent {
 
 	//--------------------------------------------------------------------------
 
-	public BoundingBoxComponent( int left, int top, int right, int bottom ) {
+	public BoundingBoxComponent( int left, int bottom, int right, int top ) {
 		this.left = left;
-		this.top = top;
-		this.right = right;
 		this.bottom = bottom;
+		this.right = right;
+		this.top = top;
 	}
 
 	//--------------------------------------------------------------------------

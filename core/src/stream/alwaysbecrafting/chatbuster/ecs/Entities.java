@@ -35,9 +35,9 @@ public abstract class Entities {
 
 	//--------------------------------------------------------------------------
 
-	public static Entity makeWall( int left, int top, int right, int bottom ) {
+	public static Entity makeWall( int left, int bottom, int right, int top ) {
 		return new Entity(
-				new BoundingBoxComponent( left, top, right, bottom ),
+				new BoundingBoxComponent( left, bottom, right, top ),
 				new ColorFillComponent(),
 				new CollisionComponent( 0b1 ));
 	}
