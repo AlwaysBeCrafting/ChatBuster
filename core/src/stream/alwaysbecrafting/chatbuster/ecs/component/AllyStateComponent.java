@@ -1,6 +1,7 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component;
 
 import stream.alwaysbecrafting.chatbuster.util.Log;
+import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.State;
 import stream.alwaysbecrafting.flare.StateMachine;
 
@@ -11,6 +12,9 @@ public class AllyStateComponent {
 	public StateMachine characterState;
 	public StateMachine gunState;
 
+	public int cellX = 0;
+	public int cellY = 0;
+
 	//--------------------------------------------------------------------------
 
 	public AllyStateComponent() {
@@ -18,16 +22,16 @@ public class AllyStateComponent {
 		gunState = new StateMachine();
 
 
-		characterState.add( "zorpIn",     new State()     );
-		characterState.add( "stand",      new State()     );
-		characterState.add( "jump",       new JumpState() );
-		characterState.add( "fall",       new FallState() );
-		characterState.add( "takeDamage", new State()     );
-		characterState.add( "zorpOut",    new State()     );
+		characterState.add( "zorpIn", new State() );
+		characterState.add( "stand", new State() );
+		characterState.add( "jump", new JumpState() );
+		characterState.add( "fall", new FallState() );
+		characterState.add( "takeDamage", new State() );
+		characterState.add( "zorpOut", new State() );
 
-		gunState.add( "idle",   new State()       );
+		gunState.add( "idle", new State() );
 		gunState.add( "charge", new ChargeState() );
-		gunState.add( "shoot",  new ShootState()  );
+		gunState.add( "shoot", new ShootState() );
 
 
 		characterState.change( "fall" );
@@ -45,8 +49,12 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onEnter( Object... params ) {
-			velocityComp = (VelocityComponent)params[0];
+			velocityComp = ( (Entity) params[0] ).get( VelocityComponent.class );
 			velocityComp.v = 5;
+
+			SpriteComponent spriteComp = ( (Entity) params[0] ).get( SpriteComponent.class );
+
+			spriteComp.setCellX( 1 );
 		}
 
 		//----------------------------------------------------------------------
@@ -61,7 +69,21 @@ public class AllyStateComponent {
 	//--------------------------------------------------------------------------
 
 	//==========================================================================
-	private class FallState extends State {}
+	private class FallState extends State {
+		//----------------------------------------------------------------------
+
+		@Override public void onEnter( Object... params ) {
+			cellX = 1;
+		}
+
+		//----------------------------------------------------------------------
+
+		@Override public void onUpdate( double deltaTime ) {
+			Log.d( "falling" );
+		}
+
+		//----------------------------------------------------------------------
+	}
 	//--------------------------------------------------------------------------
 
 
@@ -70,6 +92,12 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		private int chargeLevel;
+
+		//----------------------------------------------------------------------
+
+		@Override public void onEnter( Object... params ) {
+			cellY = 1;
+		}
 
 		//----------------------------------------------------------------------
 	}
@@ -81,6 +109,7 @@ public class AllyStateComponent {
 
 		@Override public void onEnter( Object... params ) {
 			Integer strength = (Integer)params[0];
+			cellY = 1;
 		}
 
 		//----------------------------------------------------------------------

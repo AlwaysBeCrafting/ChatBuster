@@ -23,16 +23,15 @@ public class PlayerInputSystem extends EntitySystem {
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
 		PlayerControllerComponent controlComp = entity.get( PlayerControllerComponent.class );
-		VelocityComponent velocityComp = entity.get( VelocityComponent.class );
 		AllyStateComponent stateComp = entity.get( AllyStateComponent.class );
 
 
 		if ( Gdx.input.isKeyJustPressed( controlComp.key_a )) {
-			stateComp.characterState.change( "jump", velocityComp );
+			stateComp.characterState.change( "jump", entity );
 		}
 
 		if ( Gdx.input.isKeyJustPressed( controlComp.key_b )) {
-			stateComp.gunState.change( "shoot", 1 );
+			stateComp.gunState.change( "shoot", entity, 1 );
 		}
 
 	}

@@ -11,6 +11,8 @@ public class SpriteComponent {
 	public int cellWidth;
 	public int cellHeight;
 
+	private int cellX, cellY;
+
 	//--------------------------------------------------------------------------
 
 	public SpriteComponent( String path ) {
@@ -33,11 +35,28 @@ public class SpriteComponent {
 	//--------------------------------------------------------------------------
 
 	public void setCell( int cellX, int cellY ) {
+		this.cellX = cellX;
+		this.cellY = cellY;
+
 		sprite.setRegion(
 				cellX * cellWidth,
 				cellY * cellHeight,
 				cellWidth,
 				cellHeight );
+	}
+
+	//--------------------------------------------------------------------------
+
+	public void setCellX( int cellX ) {
+		this.cellX = cellX;
+		setCell( cellX, cellY );
+	}
+
+	//--------------------------------------------------------------------------
+
+	public void setCellY( int cellY ) {
+		this.cellY = cellY;
+		setCell( cellX, cellY );
 	}
 
 	//--------------------------------------------------------------------------
