@@ -1,54 +1,53 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.render;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorFillComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
-public class SpriteRenderSystem extends EntitySystem {
+public class BoxRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
-	private final SpriteBatch BATCHER = new SpriteBatch();
+	private ShapeRenderer renderer = new ShapeRenderer();
+	private Color color = new Color();
 
 	//--------------------------------------------------------------------------
 
 	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
-		BATCHER.begin();
+		renderer.begin( ShapeRenderer.ShapeType.Filled );
+
 		super.onUpdate( engine, deltaTime );
-		BATCHER.end();
+
+		renderer.end();
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override protected boolean acceptEntity( Entity entity ) {
 		return entity.hasAll(
-				SpriteComponent.class,
-				PositionComponent.class );
+				BoundingBoxComponent.class,
+				ColorFillComponent.class );
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
-		Sprite            sprite   = entity.get( SpriteComponent.class   ).sprite;
-		PositionComponent position = entity.get( PositionComponent.class );
+		BoundingBoxComponent boundsComp = entity.get( BoundingBoxComponent.class );
+		ColorFillComponent colorComp = entity.get( ColorFillComponent.class );
 
-		BATCHER.draw(
-				sprite,
-				position.x,
-				position.y );
-	}
+		Color.argb8888ToColor( color, colorComp.color );
 
-	//--------------------------------------------------------------------------
-
-	@Override public void onStop( GameEngine engine ) {
-		super.onStop( engine );
-
-		BATCHER.dispose();
+		renderer.setColor( color );
+		renderer.rect(
+				boundsComp.rect.x,
+				boundsComp.rect.y,
+				boundsComp.rect.width,
+				boundsComp.rect.height );
 	}
 
 	//--------------------------------------------------------------------------

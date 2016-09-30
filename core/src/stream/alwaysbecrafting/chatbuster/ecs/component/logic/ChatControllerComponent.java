@@ -1,19 +1,17 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.logic;
 
 //==============================================================================
-public class DamageComponent {
+public class ChatControllerComponent {
 	//--------------------------------------------------------------------------
 
-	public int damage;
-
-	//--------------------------------------------------------------------------
-
-	public DamageComponent() {}
+	public String username;
+	public String message;
 
 	//--------------------------------------------------------------------------
 
-	public DamageComponent( int damage ) {
-		this.damage = damage;
+	public ChatControllerComponent( String username, String message ) {
+		this.username = username;
+		this.message = message;
 	}
 
 	//--------------------------------------------------------------------------

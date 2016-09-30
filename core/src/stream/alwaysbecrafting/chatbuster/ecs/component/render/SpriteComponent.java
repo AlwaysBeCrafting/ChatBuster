@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.render;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;

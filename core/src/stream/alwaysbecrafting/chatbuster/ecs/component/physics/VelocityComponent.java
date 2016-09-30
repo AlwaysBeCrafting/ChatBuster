@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 
 //==============================================================================
 public class VelocityComponent {

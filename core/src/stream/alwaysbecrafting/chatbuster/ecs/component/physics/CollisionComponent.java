@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 
 import java.util.ArrayList;
 import java.util.List;

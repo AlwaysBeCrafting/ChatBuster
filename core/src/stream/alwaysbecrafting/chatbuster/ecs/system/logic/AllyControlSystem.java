@@ -1,7 +1,7 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.logic;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.AllyGunComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.AllyMovementComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.AllyGunComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.AllyMovementComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 

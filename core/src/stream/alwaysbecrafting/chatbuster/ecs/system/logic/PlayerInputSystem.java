@@ -1,10 +1,10 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.logic;
 
 import com.badlogic.gdx.Gdx;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.AllyMovementComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.PlayerControllerComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.VelocityComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.AllyMovementComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 

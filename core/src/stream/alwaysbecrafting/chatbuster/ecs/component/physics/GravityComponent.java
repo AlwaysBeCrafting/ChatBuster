@@ -1,17 +1,19 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 
 //==============================================================================
-public class ChatControllerComponent {
+public class GravityComponent {
 	//--------------------------------------------------------------------------
 
-	public String username;
-	public String message;
+	public float force = 1;
 
 	//--------------------------------------------------------------------------
 
-	public ChatControllerComponent( String username, String message ) {
-		this.username = username;
-		this.message = message;
+	public GravityComponent() {}
+
+	//--------------------------------------------------------------------------
+
+	public GravityComponent( float force ) {
+		this.force = force;
 	}
 
 	//--------------------------------------------------------------------------

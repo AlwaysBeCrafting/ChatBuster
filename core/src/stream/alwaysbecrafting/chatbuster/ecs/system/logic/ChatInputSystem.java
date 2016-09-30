@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.logic;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;
@@ -19,7 +19,7 @@ import stream.alwaysbecrafting.flare.GameEngine;
 import stream.alwaysbecrafting.flare.GameSystem;
 
 //==============================================================================
-public class ChatControlSystem extends GameSystem {
+public class ChatInputSystem extends GameSystem {
 	//--------------------------------------------------------------------------
 
 	private static final String JOIN_COMMAND = "!join";
@@ -36,7 +36,7 @@ public class ChatControlSystem extends GameSystem {
 
 	//--------------------------------------------------------------------------
 
-	public ChatControlSystem( String username, String token ) {
+	public ChatInputSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
 			@Override public void onConnect( ConnectEvent event ) {
 				event.getBot().sendRaw().rawLine( "CAP REQ :twitch.tv/tags" );

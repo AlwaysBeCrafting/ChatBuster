@@ -1,7 +1,7 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.physics;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.GravityComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.VelocityComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.GravityComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 

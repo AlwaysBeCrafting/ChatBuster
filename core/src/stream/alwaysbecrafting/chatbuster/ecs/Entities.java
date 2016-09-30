@@ -4,15 +4,15 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Random;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.AllyMovementComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.BoundingBoxComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.ChatControllerComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.CollisionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.ColorFillComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.PlayerControllerComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.VelocityComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.AllyMovementComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.ChatControllerComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorFillComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
 

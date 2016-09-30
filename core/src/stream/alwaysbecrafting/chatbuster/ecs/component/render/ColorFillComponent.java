@@ -1,21 +1,19 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.render;
 
 //==============================================================================
-public class PositionComponent {
+public class ColorFillComponent {
 	//--------------------------------------------------------------------------
 
-	public float x = 0;
-	public float y = 0;
-
-	//--------------------------------------------------------------------------
-
-	public PositionComponent() {}
+	public int color = 0xffffffff;
 
 	//--------------------------------------------------------------------------
 
-	public PositionComponent( float x, float y ) {
-		this.x = x;
-		this.y = y;
+	public ColorFillComponent() {}
+
+	//--------------------------------------------------------------------------
+
+	public ColorFillComponent( int color ) {
+		this.color = color;
 	}
 
 	//--------------------------------------------------------------------------
