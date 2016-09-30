@@ -32,7 +32,7 @@ public abstract class Entities {
 
 				new CollisionComponent( 0b1 ),
 
-				new SpriteComponent( "guy-grey.png" ));
+				new SpriteComponent( "guy.png", 32, 32 ));
 	}
 
 	//--------------------------------------------------------------------------

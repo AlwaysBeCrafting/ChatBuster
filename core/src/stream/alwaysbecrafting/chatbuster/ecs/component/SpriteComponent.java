@@ -11,18 +11,12 @@ public class SpriteComponent {
 	public int cellWidth;
 	public int cellHeight;
 
-	public int cellX;
-	public int cellY;
-
 	//--------------------------------------------------------------------------
 
 	public SpriteComponent( String path ) {
 		sprite = new Sprite( new Texture( path ));
 		cellWidth = sprite.getTexture().getWidth();
 		cellHeight = sprite.getTexture().getHeight();
-
-		cellX = 0;
-		cellY = 0;
 	}
 
 	//--------------------------------------------------------------------------
@@ -32,6 +26,18 @@ public class SpriteComponent {
 
 		this.cellWidth = cellWidth;
 		this.cellHeight = cellHeight;
+
+		setCell( 0, 0 );
+	}
+
+	//--------------------------------------------------------------------------
+
+	public void setCell( int cellX, int cellY ) {
+		sprite.setRegion(
+				cellX * cellWidth,
+				cellY * cellHeight,
+				cellWidth,
+				cellHeight );
 	}
 
 	//--------------------------------------------------------------------------
