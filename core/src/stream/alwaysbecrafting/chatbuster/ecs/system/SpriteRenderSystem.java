@@ -1,6 +1,6 @@
 package stream.alwaysbecrafting.chatbuster.ecs.system;
 
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
@@ -34,7 +34,7 @@ public class SpriteRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
-		Texture           sprite   = entity.get( SpriteComponent.class   ).sprite;
+		Sprite            sprite   = entity.get( SpriteComponent.class   ).sprite;
 		PositionComponent position = entity.get( PositionComponent.class );
 
 		BATCHER.draw(
