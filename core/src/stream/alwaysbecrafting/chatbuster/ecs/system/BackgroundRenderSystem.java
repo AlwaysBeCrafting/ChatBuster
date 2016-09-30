@@ -7,8 +7,6 @@ import stream.alwaysbecrafting.chatbuster.util.Colors;
 import stream.alwaysbecrafting.flare.GameEngine;
 import stream.alwaysbecrafting.flare.GameSystem;
 
-import static stream.alwaysbecrafting.chatbuster.util.Colors.Solarized.BASE3;
-
 //==============================================================================
 public class BackgroundRenderSystem extends GameSystem {
 	//--------------------------------------------------------------------------
@@ -17,10 +15,10 @@ public class BackgroundRenderSystem extends GameSystem {
 		super.onStart( engine );
 
 		Gdx.gl.glClearColor(
-				Colors.r( BASE3 ),
-				Colors.g( BASE3 ),
-				Colors.b( BASE3 ),
-				Colors.a( BASE3 ));
+				Colors.r( 0xff887788 ),
+				Colors.g( 0xff887788 ),
+				Colors.b( 0xff887788 ),
+				Colors.a( 0xff887788 ));
 	}
 
 	//--------------------------------------------------------------------------
