@@ -21,8 +21,8 @@ public class DesktopLauncher extends Application {
 
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 
-		config.width = 320;
-		config.height = 180;
+		config.width = 1280;
+		config.height = 720;
 
 		new LwjglApplication( new ChatBuster( authenticator.getAccessToken() ), config );
 	}

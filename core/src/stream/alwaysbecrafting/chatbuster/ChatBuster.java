@@ -1,6 +1,7 @@
 package stream.alwaysbecrafting.chatbuster;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
 import stream.alwaysbecrafting.chatbuster.ecs.system.AllyStateSystem;
@@ -29,6 +30,10 @@ public class ChatBuster extends ApplicationAdapter {
 	//--------------------------------------------------------------------------
 
 	@Override public void create() {
+		Matrix4 matrix = new Matrix4();
+		matrix.setToOrtho2D( 0, 0, 320, 180 );
+
+
 		engine = new GameEngine();
 
 		engine.add( new ChatControlSystem( "alwaysbecrafting", TOKEN ));
@@ -38,8 +43,8 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new MovementSystem() );
 
 		engine.add( new BackgroundRenderSystem() );
-		engine.add( new BoxRenderSystem() );
-		engine.add( new SpriteRenderSystem() );
+		engine.add( new BoxRenderSystem( matrix ));
+		engine.add( new SpriteRenderSystem( matrix ));
 
 		engine.add( Entities.makePlayerCharacter() );
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));

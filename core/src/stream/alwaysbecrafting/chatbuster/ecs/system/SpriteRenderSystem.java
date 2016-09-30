@@ -2,6 +2,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.system;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
@@ -14,6 +15,12 @@ public class SpriteRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	private final SpriteBatch BATCHER = new SpriteBatch();
+
+	//--------------------------------------------------------------------------
+
+	public SpriteRenderSystem( Matrix4 matrix ) {
+		BATCHER.setProjectionMatrix( matrix );
+	}
 
 	//--------------------------------------------------------------------------
 
