@@ -38,17 +38,14 @@ public class AllyMovementComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onEnter( Object... params ) {
-			Entity entity = (Entity)params[0];
-
-			entity.add( new GravityComponent( 1 ));
-			entity.get( VelocityComponent.class ).v = 5;
-			entity.get( SpriteComponent.class ).setCellX( 1 );
+			( (GravityComponent) params[0] ).force = 1;
+			( (VelocityComponent)params[1] ).v     = 5;
+			( (SpriteComponent)  params[2] ).setCellX( 1 );
 		}
 
 		//----------------------------------------------------------------------
 
 		@Override public void onUpdate( double deltaTime ) {
-			Log.d( "jumping" );
 			if ( velocityComp.v < 0 ) state.change( "fall", velocityComp );
 		}
 
