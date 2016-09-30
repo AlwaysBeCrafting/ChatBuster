@@ -4,11 +4,10 @@ import com.badlogic.gdx.ApplicationAdapter;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
 import stream.alwaysbecrafting.chatbuster.ecs.system.logic.AllyControlSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BackgroundRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BoxRenderSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.logic.ChatInputSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.SpriteRenderSystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
@@ -31,7 +30,7 @@ public class ChatBuster extends ApplicationAdapter {
 	@Override public void create() {
 		engine = new GameEngine();
 
-		engine.add( new ChatInputSystem( "alwaysbecrafting", TOKEN ));
+//		engine.add( new ChatInputSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );
 		engine.add( new AllyControlSystem() );
 
