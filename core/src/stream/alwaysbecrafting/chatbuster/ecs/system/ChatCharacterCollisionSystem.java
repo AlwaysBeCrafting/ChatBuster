@@ -1,6 +1,6 @@
 package stream.alwaysbecrafting.chatbuster.ecs.system;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.AllyStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.AllyMovementComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.CollisionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.DamageComponent;
 import stream.alwaysbecrafting.flare.Entity;
@@ -13,14 +13,14 @@ public class ChatCharacterCollisionSystem extends EntitySystem {
 	@Override protected boolean acceptEntity( Entity entity ) {
 		return entity.hasAll(
 				CollisionComponent.class,
-				AllyStateComponent.class );
+				AllyMovementComponent.class );
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
 		CollisionComponent collisionComp = entity.get( CollisionComponent.class );
-		AllyStateComponent allyComp = entity.get( AllyStateComponent.class );
+		AllyMovementComponent allyComp = entity.get( AllyMovementComponent.class );
 
 		if ( allyComp.characterState.is( "damage" )) {
 			collisionComp.collisions.stream()

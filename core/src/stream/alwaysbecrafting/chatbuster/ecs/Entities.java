@@ -4,7 +4,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Random;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.AllyStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.AllyMovementComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.BoundingBoxComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.ChatControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.CollisionComponent;
@@ -24,7 +24,7 @@ public abstract class Entities {
 		Random rand = new Random();
 
 		return new Entity(
-				new AllyStateComponent(),
+				new AllyMovementComponent(),
 
 				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
 				new VelocityComponent(),
