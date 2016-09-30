@@ -12,9 +12,6 @@ public class AllyStateComponent {
 	public StateMachine characterState;
 	public StateMachine gunState;
 
-	public int cellX = 0;
-	public int cellY = 0;
-
 	//--------------------------------------------------------------------------
 
 	public AllyStateComponent() {
@@ -32,10 +29,6 @@ public class AllyStateComponent {
 		gunState.add( "idle", new State() );
 		gunState.add( "charge", new ChargeState() );
 		gunState.add( "shoot", new ShootState() );
-
-
-		characterState.change( "fall" );
-		gunState.change( "idle" );
 	}
 
 	//--------------------------------------------------------------------------
@@ -49,12 +42,11 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onEnter( Object... params ) {
-			velocityComp = ( (Entity) params[0] ).get( VelocityComponent.class );
-			velocityComp.v = 5;
+			Entity entity = (Entity)params[0];
 
-			( (Entity)params[0] ).add( new GravityComponent( 1 ));
-
-			cellX = 1;
+			entity.add( new GravityComponent( 1 ));
+			entity.get( VelocityComponent.class ).v = 5;
+			entity.get( SpriteComponent.class ).setCellX( 1 );
 		}
 
 		//----------------------------------------------------------------------
@@ -73,8 +65,10 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onEnter( Object... params ) {
-			( (Entity)params[0] ).add( new GravityComponent( 1 ));
-			cellX = 1;
+			Entity entity = (Entity)params[0];
+
+			entity.add( new GravityComponent( 1 ));
+			entity.get( SpriteComponent.class ).setCellX( 1 );
 		}
 
 		//----------------------------------------------------------------------
@@ -97,7 +91,9 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onEnter( Object... params ) {
-			cellY = 1;
+			Entity entity = (Entity)params[0];
+
+			entity.get( SpriteComponent.class ).setCellY( 1 );
 		}
 
 		//----------------------------------------------------------------------
@@ -109,8 +105,9 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onEnter( Object... params ) {
-			Integer strength = (Integer)params[0];
-			cellY = 1;
+			Entity entity = (Entity)params[0];
+
+			entity.get( SpriteComponent.class ).setCellY( 1 );
 		}
 
 		//----------------------------------------------------------------------
