@@ -12,19 +12,19 @@ import stream.alwaysbecrafting.flare.StateMachine;
 public class AllyMovementComponent {
 	//--------------------------------------------------------------------------
 
-	public StateMachine characterState;
+	public StateMachine state;
 
 	//--------------------------------------------------------------------------
 
 	public AllyMovementComponent() {
-		characterState = new StateMachine();
+		state = new StateMachine();
 
-		characterState.add( "zorpIn", new State() );
-		characterState.add( "stand", new State() );
-		characterState.add( "jump", new JumpState() );
-		characterState.add( "fall", new FallState() );
-		characterState.add( "takeDamage", new State() );
-		characterState.add( "zorpOut", new State() );
+		state.add( "zorpIn", new State() );
+		state.add( "stand", new State() );
+		state.add( "jump", new JumpState() );
+		state.add( "fall", new FallState() );
+		state.add( "takeDamage", new State() );
+		state.add( "zorpOut", new State() );
 	}
 
 	//--------------------------------------------------------------------------
@@ -49,7 +49,7 @@ public class AllyMovementComponent {
 
 		@Override public void onUpdate( double deltaTime ) {
 			Log.d( "jumping" );
-			if ( velocityComp.v < 0 ) characterState.change( "fall", velocityComp );
+			if ( velocityComp.v < 0 ) state.change( "fall", velocityComp );
 		}
 
 		//----------------------------------------------------------------------

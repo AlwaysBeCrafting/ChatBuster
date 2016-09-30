@@ -2,6 +2,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.system.logic;
 
 import com.badlogic.gdx.Gdx;
 
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.AllyGunComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.AllyMovementComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
@@ -16,24 +17,26 @@ public class PlayerInputSystem extends EntitySystem {
 		return entity.hasAll(
 				PlayerControllerComponent.class,
 				VelocityComponent.class,
-				AllyMovementComponent.class );
+				AllyMovementComponent.class,
+				AllyGunComponent.class );
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
 		PlayerControllerComponent controlComp = entity.get( PlayerControllerComponent.class );
-		AllyMovementComponent stateComp = entity.get( AllyMovementComponent.class );
+
+		AllyMovementComponent moveComp = entity.get( AllyMovementComponent.class );
+		AllyGunComponent gunComp = entity.get( AllyGunComponent.class );
 
 
 		if ( Gdx.input.isKeyJustPressed( controlComp.key_a )) {
-			stateComp.characterState.change( "jump", entity );
+			moveComp.state.change( "jump" );
 		}
 
 		if ( Gdx.input.isKeyJustPressed( controlComp.key_b )) {
-			stateComp.gunState.change( "shoot", entity, 1 );
+			gunComp.state.change( "shoot" );
 		}
-
 	}
 
 	//--------------------------------------------------------------------------

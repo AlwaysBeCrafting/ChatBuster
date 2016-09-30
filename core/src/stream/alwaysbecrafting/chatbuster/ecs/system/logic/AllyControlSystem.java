@@ -19,12 +19,12 @@ public class AllyControlSystem extends EntitySystem {
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
 		AllyMovementComponent moveComp = entity.get( AllyMovementComponent.class );
-		if ( moveComp.characterState.is( "" )) moveComp.characterState.change( "fall", entity );
-		moveComp.characterState.update( deltaTime );
+		if ( moveComp.state.is( "" )) moveComp.state.change( "fall", entity );
+		moveComp.state.update( deltaTime );
 
 		AllyGunComponent gunComp = entity.get( AllyGunComponent.class );
-		if ( gunComp.gunState.is( "" )) gunComp.gunState.change( "idle", entity );
-		gunComp.gunState.update( deltaTime );
+		if ( gunComp.state.is( "" )) gunComp.state.change( "idle", entity );
+		gunComp.state.update( deltaTime );
 	}
 
 	//--------------------------------------------------------------------------

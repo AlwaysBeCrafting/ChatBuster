@@ -10,16 +10,16 @@ import stream.alwaysbecrafting.flare.StateMachine;
 public class AllyGunComponent {
 	//--------------------------------------------------------------------------
 
-	public StateMachine gunState;
+	public StateMachine state;
 
 	//--------------------------------------------------------------------------
 
 	public AllyGunComponent() {
-		gunState = new StateMachine();
+		state = new StateMachine();
 
-		gunState.add( "idle", new State() );
-		gunState.add( "charge", new ChargeState() );
-		gunState.add( "shoot", new ShootState() );
+		state.add( "idle", new State() );
+		state.add( "charge", new ChargeState() );
+		state.add( "shoot", new ShootState() );
 	}
 
 	//--------------------------------------------------------------------------
@@ -56,13 +56,11 @@ public class AllyGunComponent {
 
 		@Override public void onUpdate( double deltaTime ) {
 			Log.d( "shooting" );
-			gunState.change( "idle" );
+			state.change( "idle" );
 		}
 
 		//----------------------------------------------------------------------
 	}
-	//--------------------------------------------------------------------------
-
 	//--------------------------------------------------------------------------
 }
 //------------------------------------------------------------------------------
