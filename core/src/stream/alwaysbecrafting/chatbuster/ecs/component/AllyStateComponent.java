@@ -52,9 +52,9 @@ public class AllyStateComponent {
 			velocityComp = ( (Entity) params[0] ).get( VelocityComponent.class );
 			velocityComp.v = 5;
 
-			SpriteComponent spriteComp = ( (Entity) params[0] ).get( SpriteComponent.class );
+			( (Entity)params[0] ).add( new GravityComponent( 1 ));
 
-			spriteComp.setCellX( 1 );
+			cellX = 1;
 		}
 
 		//----------------------------------------------------------------------
@@ -73,6 +73,7 @@ public class AllyStateComponent {
 		//----------------------------------------------------------------------
 
 		@Override public void onEnter( Object... params ) {
+			( (Entity)params[0] ).add( new GravityComponent( 1 ));
 			cellX = 1;
 		}
 
