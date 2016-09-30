@@ -18,20 +18,20 @@ public class BoxRenderSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	public BoxRenderSystem() {
-		requireAll(
-				BoundingBoxComponent.class,
-				ColorFillComponent.class );
-	}
-
-	//--------------------------------------------------------------------------
-
 	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
 		renderer.begin( ShapeRenderer.ShapeType.Filled );
 
 		super.onUpdate( engine, deltaTime );
 
 		renderer.end();
+	}
+
+	//--------------------------------------------------------------------------
+
+	@Override protected boolean acceptEntity( Entity entity ) {
+		return entity.hasAll(
+				BoundingBoxComponent.class,
+				ColorFillComponent.class );
 	}
 
 	//--------------------------------------------------------------------------

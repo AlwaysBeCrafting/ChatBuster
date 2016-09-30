@@ -10,8 +10,8 @@ import stream.alwaysbecrafting.flare.EntitySystem;
 public class ChatCharacterCollisionSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
-	public ChatCharacterCollisionSystem() {
-		requireAll(
+	@Override protected boolean acceptEntity( Entity entity ) {
+		return entity.hasAll(
 				CollisionComponent.class,
 				AllyStateComponent.class );
 	}

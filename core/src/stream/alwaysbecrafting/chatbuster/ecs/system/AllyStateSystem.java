@@ -8,8 +8,8 @@ import stream.alwaysbecrafting.flare.EntitySystem;
 public class AllyStateSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
-	public AllyStateSystem() {
-		requireAll( AllyStateComponent.class );
+	@Override protected boolean acceptEntity( Entity entity ) {
+		return entity.has( AllyStateComponent.class );
 	}
 
 	//--------------------------------------------------------------------------

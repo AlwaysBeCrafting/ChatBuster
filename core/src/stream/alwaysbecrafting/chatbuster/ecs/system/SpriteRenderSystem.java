@@ -17,18 +17,18 @@ public class SpriteRenderSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	public SpriteRenderSystem() {
-		requireAll(
-				SpriteComponent.class,
-				PositionComponent.class );
-	}
-
-	//--------------------------------------------------------------------------
-
 	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
 		BATCHER.begin();
 		super.onUpdate( engine, deltaTime );
 		BATCHER.end();
+	}
+
+	//--------------------------------------------------------------------------
+
+	@Override protected boolean acceptEntity( Entity entity ) {
+		return entity.hasAll(
+				SpriteComponent.class,
+				PositionComponent.class );
 	}
 
 	//--------------------------------------------------------------------------

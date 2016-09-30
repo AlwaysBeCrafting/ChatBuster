@@ -10,9 +10,9 @@ import stream.alwaysbecrafting.flare.GameEngine;
 public class CollisionDetectionSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
-	public CollisionDetectionSystem() {
-		requireAll( CollisionComponent.class );
-		requireOne( BoundingBoxComponent.class );
+	@Override protected boolean acceptEntity( Entity entity ) {
+		return entity.hasAll( CollisionComponent.class )
+		&&     entity.hasAny( BoundingBoxComponent.class );
 	}
 
 	//--------------------------------------------------------------------------

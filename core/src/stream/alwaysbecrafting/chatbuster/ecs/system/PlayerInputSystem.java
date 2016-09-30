@@ -12,8 +12,8 @@ import stream.alwaysbecrafting.flare.EntitySystem;
 public class PlayerInputSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
-	public PlayerInputSystem() {
-		requireAll(
+	@Override protected boolean acceptEntity( Entity entity ) {
+		return entity.hasAll(
 				PlayerControllerComponent.class,
 				VelocityComponent.class,
 				AllyStateComponent.class );
