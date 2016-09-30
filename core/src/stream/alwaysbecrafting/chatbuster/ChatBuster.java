@@ -7,7 +7,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.Entities;
 import stream.alwaysbecrafting.chatbuster.ecs.system.AllyStateSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.BackgroundRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.BoxRenderSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.ChatControlSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.ChatSpawnerSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.MovementSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.PlayerInputSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.SpriteRenderSystem;
@@ -36,7 +36,7 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine = new GameEngine();
 
-		engine.add( new ChatControlSystem( "alwaysbecrafting", TOKEN ));
+		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );
 		engine.add( new AllyStateSystem() );
 

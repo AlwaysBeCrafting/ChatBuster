@@ -19,7 +19,7 @@ import stream.alwaysbecrafting.flare.GameEngine;
 import stream.alwaysbecrafting.flare.GameSystem;
 
 //==============================================================================
-public class ChatControlSystem extends GameSystem {
+public class ChatSpawnerSystem extends GameSystem {
 	//--------------------------------------------------------------------------
 
 	private static final String JOIN_COMMAND = "!join";
@@ -36,7 +36,7 @@ public class ChatControlSystem extends GameSystem {
 
 	//--------------------------------------------------------------------------
 
-	public ChatControlSystem( String username, String token ) {
+	public ChatSpawnerSystem( String username, String token ) {
 		MESSAGE_LISTENER = new ListenerAdapter() {
 			@Override public void onConnect( ConnectEvent event ) {
 				event.getBot().sendRaw().rawLine( "CAP REQ :twitch.tv/tags" );
@@ -53,7 +53,7 @@ public class ChatControlSystem extends GameSystem {
 					if ( !hasJoined ) {
 						event.getBot().send().message(
 								event.getChannel().getName(),
-								"Bot has joined channel, type '!join' to see your message in the log." );
+								"Bot has joined channel, type '!join' to see something happen in the game." );
 					}
 					hasJoined = true;
 				}
