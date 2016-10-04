@@ -40,7 +40,7 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new BoxRenderSystem() );
 		engine.add( new SpriteRenderSystem() );
 
-		engine.add( Entities.makePlayerCharacter() );
+		engine.add( Entities.makePlayerCharacter( 100, 100 ));
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
 	}
 

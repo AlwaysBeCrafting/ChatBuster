@@ -20,14 +20,12 @@ import stream.alwaysbecrafting.flare.Entity;
 public abstract class Entities {
 	//--------------------------------------------------------------------------
 
-	public static Entity makeCharacter() {
-		Random rand = new Random();
-
+	public static Entity makeCharacter( int x, int y ) {
 		return new Entity(
 //				new AllyMovementComponent(),
 //				new AllyGunComponent(),
 
-				new PositionComponent( rand.nextFloat() * 320, rand.nextFloat() * 180 ),
+				new PositionComponent( x, y ),
 				new VelocityComponent( 0, 7 ),
 				new GravityComponent( 0.5f ),
 				new BoundingBoxComponent( 7, 9, 26, 32 ),
@@ -40,7 +38,8 @@ public abstract class Entities {
 	//--------------------------------------------------------------------------
 
 	public static Entity makeChatCharacter( MessageEvent event ) {
-		Entity entity = makeCharacter();
+		Random rand = new Random();
+		Entity entity = makeCharacter( rand.nextInt( 320 ), rand.nextInt( 180 ));
 
 		String username = "";
 		if ( event.getUser() != null ) username = event.getUser().getNick();
@@ -51,8 +50,8 @@ public abstract class Entities {
 
 	//--------------------------------------------------------------------------
 
-	public static Entity makePlayerCharacter() {
-		Entity entity = makeCharacter();
+	public static Entity makePlayerCharacter( int x, int y ) {
+		Entity entity = makeCharacter( x, y );
 
 		entity.add( new PlayerControllerComponent() );
 
