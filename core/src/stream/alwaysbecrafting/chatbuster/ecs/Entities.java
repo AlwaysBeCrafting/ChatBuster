@@ -8,9 +8,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.logic.ChatControllerComp
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.physics.GravityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorFillComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.flare.Entity;
@@ -26,13 +24,13 @@ public abstract class Entities {
 //				new AllyGunComponent(),
 
 				new PositionComponent( x, y ),
-				new VelocityComponent( 0, 7 ),
-				new GravityComponent( 0.5f ),
+//				new VelocityComponent( 0, 7 ),
+//				new GravityComponent( 0.5f ),
 				new BoundingBoxComponent( 7, 9, 26, 32 ),
 
 				new CollisionComponent( 0b1 ),
 
-				new SpriteComponent( "guy.png", 32, 32 ));
+				new SpriteComponent( "guy.png", 32, 32, 16, 3 ));
 	}
 
 	//--------------------------------------------------------------------------

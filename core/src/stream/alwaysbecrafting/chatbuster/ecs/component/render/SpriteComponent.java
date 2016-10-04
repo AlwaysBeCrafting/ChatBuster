@@ -2,6 +2,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.component.render;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector2;
 
 //==============================================================================
 public class SpriteComponent {
@@ -10,6 +11,9 @@ public class SpriteComponent {
 	public Sprite sprite;
 	public int cellWidth;
 	public int cellHeight;
+
+	public Vector2 origin = new Vector2();
+
 
 	private int cellX, cellY;
 
@@ -30,6 +34,14 @@ public class SpriteComponent {
 		this.cellHeight = cellHeight;
 
 		setCell( 0, 0 );
+	}
+
+	//--------------------------------------------------------------------------
+
+	public SpriteComponent( String path, int cellWidth, int cellHeight, int originX, int originY ) {
+		this( path, cellWidth, cellHeight );
+
+		origin.set( originX, originY );
 	}
 
 	//--------------------------------------------------------------------------
