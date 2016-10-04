@@ -1,21 +1,27 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import stream.alwaysbecrafting.flare.Entity;
 
 //==============================================================================
-public class PositionComponent {
+public class CollisionComponent {
 	//--------------------------------------------------------------------------
 
-	public float x = 0;
-	public float y = 0;
-
-	//--------------------------------------------------------------------------
-
-	public PositionComponent() {}
+	public int layers;
+	public List<Entity> collisions = new ArrayList<>();
 
 	//--------------------------------------------------------------------------
 
-	public PositionComponent( float x, float y ) {
-		this.x = x;
-		this.y = y;
+	public CollisionComponent( int layers ) {
+		this.layers = layers;
+	}
+
+	//--------------------------------------------------------------------------
+
+	public boolean sharesLayer( CollisionComponent other ) {
+		return ( layers & other.layers ) != 0;
 	}
 
 	//--------------------------------------------------------------------------

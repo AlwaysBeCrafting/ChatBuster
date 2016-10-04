@@ -1,18 +1,17 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.state;
 
 //==============================================================================
-public class ChatControllerComponent {
+public class CharacterZorpStateComponent {
 	//--------------------------------------------------------------------------
 
-	public String username;
-	public String message;
+	public static final int IN = 0;
+	public static final int OUT = 1;
 
 	//--------------------------------------------------------------------------
 
-	public ChatControllerComponent( String username, String message ) {
-		this.username = username;
-		this.message = message;
-	}
+	public double durationRemaining;
+
+	public int direction;
 
 	//--------------------------------------------------------------------------
 }

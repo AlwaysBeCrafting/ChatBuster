@@ -1,19 +1,19 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 
 //==============================================================================
-public class DamageComponent {
+public class GravityComponent {
 	//--------------------------------------------------------------------------
 
-	public int damage;
-
-	//--------------------------------------------------------------------------
-
-	public DamageComponent() {}
+	public float force = 1;
 
 	//--------------------------------------------------------------------------
 
-	public DamageComponent( int damage ) {
-		this.damage = damage;
+	public GravityComponent() {}
+
+	//--------------------------------------------------------------------------
+
+	public GravityComponent( float force ) {
+		this.force = force;
 	}
 
 	//--------------------------------------------------------------------------

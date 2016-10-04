@@ -1,27 +1,33 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.logic;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.GravityComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.VelocityComponent;
+import com.badlogic.gdx.Gdx;
+
+import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
+import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 
 //==============================================================================
-public class GravitySystem extends EntitySystem {
+public class PlayerInputSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected boolean acceptEntity( Entity entity ) {
 		return entity.hasAll(
-				GravityComponent.class,
-				VelocityComponent.class );
+				PlayerControllerComponent.class );
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
-		GravityComponent gravComp = entity.get( GravityComponent.class );
-		VelocityComponent veloComp = entity.get( VelocityComponent.class );
+		PlayerControllerComponent controlComp = entity.get( PlayerControllerComponent.class );
 
-		veloComp.v -= gravComp.force;
+		if ( Gdx.input.isKeyJustPressed( controlComp.key_a )) {
+			Log.d( "jump" );
+		}
+
+		if ( Gdx.input.isKeyJustPressed( controlComp.key_b )) {
+			Log.d( "shoot" );
+		}
 	}
 
 	//--------------------------------------------------------------------------

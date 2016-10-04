@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.logic;
 
 import com.badlogic.gdx.Input;
 

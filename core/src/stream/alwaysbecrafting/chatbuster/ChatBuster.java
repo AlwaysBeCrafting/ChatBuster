@@ -4,13 +4,13 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
-import stream.alwaysbecrafting.chatbuster.ecs.system.AllyStateSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.BackgroundRenderSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.BoxRenderSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.ChatSpawnerSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.MovementSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.PlayerInputSystem;
-import stream.alwaysbecrafting.chatbuster.ecs.system.SpriteRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.logic.ChatSpawnerSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.GravitySystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.render.BackgroundRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.render.BoxRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.render.SpriteRenderSystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
@@ -38,15 +38,15 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );
-		engine.add( new AllyStateSystem() );
 
 		engine.add( new MovementSystem() );
+		engine.add( new GravitySystem() );
 
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new BoxRenderSystem( matrix ));
 		engine.add( new SpriteRenderSystem( matrix ));
 
-		engine.add( Entities.makePlayerCharacter() );
+		engine.add( Entities.makePlayerCharacter( 100, 100 ));
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
 	}
 

@@ -1,11 +1,11 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.render;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.BoundingBoxComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.ColorFillComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorFillComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;

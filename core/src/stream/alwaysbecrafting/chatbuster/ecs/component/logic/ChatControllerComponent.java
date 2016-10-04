@@ -1,21 +1,17 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.logic;
 
 //==============================================================================
-public class VelocityComponent {
+public class ChatControllerComponent {
 	//--------------------------------------------------------------------------
 
-	public float h;
-	public float v;
-
-	//--------------------------------------------------------------------------
-
-	public VelocityComponent() {}
+	public String username;
+	public String message;
 
 	//--------------------------------------------------------------------------
 
-	public VelocityComponent( float h, float v ) {
-		this.h = h;
-		this.v = v;
+	public ChatControllerComponent( String username, String message ) {
+		this.username = username;
+		this.message = message;
 	}
 
 	//--------------------------------------------------------------------------

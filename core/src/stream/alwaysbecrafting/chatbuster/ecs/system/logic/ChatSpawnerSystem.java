@@ -1,4 +1,4 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.logic;
 
 import org.pircbotx.Configuration;
 import org.pircbotx.PircBotX;

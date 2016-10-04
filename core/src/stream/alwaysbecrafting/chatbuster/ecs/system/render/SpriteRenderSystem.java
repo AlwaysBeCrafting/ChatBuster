@@ -1,11 +1,11 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.render;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.PositionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;

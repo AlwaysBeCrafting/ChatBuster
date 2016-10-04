@@ -1,19 +1,19 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component;
+package stream.alwaysbecrafting.chatbuster.ecs.component.logic;
 
 //==============================================================================
-public class ColorFillComponent {
+public class DamageComponent {
 	//--------------------------------------------------------------------------
 
-	public int color = 0xffffffff;
-
-	//--------------------------------------------------------------------------
-
-	public ColorFillComponent() {}
+	public int damage;
 
 	//--------------------------------------------------------------------------
 
-	public ColorFillComponent( int color ) {
-		this.color = color;
+	public DamageComponent() {}
+
+	//--------------------------------------------------------------------------
+
+	public DamageComponent( int damage ) {
+		this.damage = damage;
 	}
 
 	//--------------------------------------------------------------------------

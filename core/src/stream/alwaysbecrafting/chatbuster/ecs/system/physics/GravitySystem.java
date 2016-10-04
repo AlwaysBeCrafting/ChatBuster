@@ -1,27 +1,27 @@
-package stream.alwaysbecrafting.chatbuster.ecs.system;
+package stream.alwaysbecrafting.chatbuster.ecs.system.physics;
 
-import stream.alwaysbecrafting.chatbuster.ecs.component.AllyStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.GravityComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 
 //==============================================================================
-public class AllyStateSystem extends EntitySystem {
+public class GravitySystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected boolean acceptEntity( Entity entity ) {
-		return entity.has( AllyStateComponent.class );
+		return entity.hasAll(
+				GravityComponent.class,
+				VelocityComponent.class );
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
-		AllyStateComponent stateComp = entity.get( AllyStateComponent.class );
+		GravityComponent gravComp = entity.get( GravityComponent.class );
+		VelocityComponent veloComp = entity.get( VelocityComponent.class );
 
-		if ( stateComp.characterState.is( "" )) stateComp.characterState.change( "fall", entity );
-		if ( stateComp.gunState.is( "" )) stateComp.gunState.change( "idle", entity );
-
-		stateComp.characterState.update( deltaTime );
-		stateComp.gunState.update( deltaTime );
+		veloComp.v -= gravComp.force;
 	}
 
 	//--------------------------------------------------------------------------
