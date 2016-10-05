@@ -3,7 +3,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 import java.util.ArrayList;
 import java.util.List;
 
-import stream.alwaysbecrafting.flare.Entity;
+import stream.alwaysbecrafting.chatbuster.data.Collision;
 
 //==============================================================================
 public class CollisionComponent {
@@ -24,18 +24,6 @@ public class CollisionComponent {
 		return ( layers & other.layers ) != 0;
 	}
 
-	//--------------------------------------------------------------------------
-
-	//==========================================================================
-	public static class Collision {
-		//----------------------------------------------------------------------
-
-		public Entity other;
-		public int intersectionWidth;
-		public int intersectionHeight;
-
-		//----------------------------------------------------------------------
-	}
 	//--------------------------------------------------------------------------
 }
 //------------------------------------------------------------------------------

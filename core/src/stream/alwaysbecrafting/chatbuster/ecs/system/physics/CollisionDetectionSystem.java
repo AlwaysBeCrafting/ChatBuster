@@ -2,6 +2,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.system.physics;
 
 import com.badlogic.gdx.math.Rectangle;
 
+import stream.alwaysbecrafting.chatbuster.data.Collision;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
 import stream.alwaysbecrafting.flare.Entity;
@@ -39,7 +40,7 @@ public class CollisionDetectionSystem extends EntitySystem {
 				.filter( other -> other.get( BoundingBoxComponent.class ).intersects( boundsComp, INTERSECTION ))
 
 				.forEach( other -> {
-					CollisionComponent.Collision c = new CollisionComponent.Collision();
+					Collision c = new Collision();
 					c.other = other;
 					c.intersectionWidth = (int)INTERSECTION.width;
 					c.intersectionHeight = (int)INTERSECTION.height;
