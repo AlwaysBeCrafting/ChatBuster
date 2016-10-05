@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
-import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
@@ -41,8 +40,6 @@ public class CollisionDetectionSystem extends EntitySystem {
 		eStream = eStream.filter( other -> other.get( BoundingBoxComponent.class ).intersects( boundsComp, INTERSECTION ));
 
 		eStream.forEach( other -> collisionComp.collisions.add( other ));
-
-		Log.d( collisionComp.collisions.size() + " collisions" );
 	}
 
 	//--------------------------------------------------------------------------

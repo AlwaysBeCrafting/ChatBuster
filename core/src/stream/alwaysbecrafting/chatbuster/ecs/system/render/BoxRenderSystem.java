@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorFillComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponent;
+import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
@@ -16,7 +18,7 @@ public class BoxRenderSystem extends EntitySystem {
 
 	private final ShapeRenderer RENDERER = new ShapeRenderer();
 
-	private Color color = new Color();
+	private final Color COLOR = new Color();
 
 	//--------------------------------------------------------------------------
 
@@ -27,7 +29,7 @@ public class BoxRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
-		RENDERER.begin( ShapeRenderer.ShapeType.Filled );
+		RENDERER.begin( ShapeRenderer.ShapeType.Line );
 
 		super.onUpdate( engine, deltaTime );
 
@@ -39,18 +41,25 @@ public class BoxRenderSystem extends EntitySystem {
 	@Override protected boolean acceptEntity( Entity entity ) {
 		return entity.hasAll(
 				BoundingBoxComponent.class,
-				ColorFillComponent.class );
+				ColorDrawComponent.class );
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
+		Log.d( "drawing a box" );
 		BoundingBoxComponent boundsComp = entity.get( BoundingBoxComponent.class );
-		ColorFillComponent colorComp = entity.get( ColorFillComponent.class );
+		ColorDrawComponent colorComp = entity.get( ColorDrawComponent.class );
 
-		Color.argb8888ToColor( color, colorComp.color );
+		if ( entity.has( PositionComponent.class )) {
+			boundsComp.moveTo(
+					entity.get( PositionComponent.class ).x,
+					entity.get( PositionComponent.class ).y );
+		}
 
-		RENDERER.setColor( color );
+		Color.argb8888ToColor( COLOR, colorComp.color );
+
+		RENDERER.setColor( COLOR );
 		RENDERER.rect(
 				boundsComp.rect.x,
 				boundsComp.rect.y,

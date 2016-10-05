@@ -4,8 +4,8 @@ package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 public class PositionComponent {
 	//--------------------------------------------------------------------------
 
-	public float x = 0;
-	public float y = 0;
+	public int x = 0;
+	public int y = 0;
 
 	//--------------------------------------------------------------------------
 
@@ -13,7 +13,7 @@ public class PositionComponent {
 
 	//--------------------------------------------------------------------------
 
-	public PositionComponent( float x, float y ) {
+	public PositionComponent( int x, int y ) {
 		this.x = x;
 		this.y = y;
 	}

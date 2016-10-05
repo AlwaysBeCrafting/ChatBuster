@@ -10,7 +10,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxCompo
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorFillComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
@@ -59,10 +59,11 @@ public abstract class Entities {
 
 	//--------------------------------------------------------------------------
 
-	public static Entity makeWall( int left, int bottom, int right, int top ) {
+	public static Entity makeWall( int x, int y, int width, int height ) {
 		return new Entity(
-				new BoundingBoxComponent( left, bottom, right, top ),
-				new ColorFillComponent( 0xff000044 ),
+				new PositionComponent( x, y ),
+				new BoundingBoxComponent( width, height, 0, 0 ),
+				new ColorDrawComponent( 0xffffffff ),
 				new CollisionComponent( 0b1 ));
 	}
 
