@@ -38,7 +38,13 @@ public class CollisionDetectionSystem extends EntitySystem {
 				.filter( other -> other.has( BoundingBoxComponent.class ))
 				.filter( other -> other.get( BoundingBoxComponent.class ).intersects( boundsComp, INTERSECTION ))
 
-				.forEach( other -> collisionComp.collisions.add( other ));
+				.forEach( other -> {
+					CollisionComponent.Collision c = new CollisionComponent.Collision();
+					c.other = other;
+					c.intersectionWidth = (int)INTERSECTION.width;
+					c.intersectionHeight = (int)INTERSECTION.height;
+					collisionComp.collisions.add( c );
+				});
 	}
 
 	//--------------------------------------------------------------------------
