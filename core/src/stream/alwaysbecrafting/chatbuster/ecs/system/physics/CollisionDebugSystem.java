@@ -26,7 +26,7 @@ public class CollisionDebugSystem extends EntitySystem {
 		else                                      colorComp.color = 0xffff0000;
 
 		collisionComp.collisions.forEach( collision -> {
-			Log.d( collision.intersection.width + "x" + collision.intersection.height );
+			Log.d( "Quadrant " + collision.quadrant );
 		} );
 	}
 
