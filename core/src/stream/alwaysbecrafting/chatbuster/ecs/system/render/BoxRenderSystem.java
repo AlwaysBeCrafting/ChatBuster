@@ -1,6 +1,8 @@
 package stream.alwaysbecrafting.chatbuster.ecs.system.render;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Matrix4;
 
@@ -19,6 +21,8 @@ public class BoxRenderSystem extends EntitySystem {
 
 	private final Color COLOR = new Color();
 
+	private float alpha = 1;
+
 	//--------------------------------------------------------------------------
 
 	public BoxRenderSystem( Matrix4 matrix ) {
@@ -28,10 +32,16 @@ public class BoxRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override public void onUpdate( GameEngine engine, double deltaTime ) {
-		RENDERER.begin( ShapeRenderer.ShapeType.Line );
-
+		Gdx.gl.glEnable( GL20.GL_BLEND );
+		alpha = 0.3f;
+		RENDERER.begin( ShapeRenderer.ShapeType.Filled );
 		super.onUpdate( engine, deltaTime );
+		RENDERER.end();
+		Gdx.gl.glDisable( GL20.GL_BLEND );
 
+		alpha = 1;
+		RENDERER.begin( ShapeRenderer.ShapeType.Line );
+		super.onUpdate( engine, deltaTime );
 		RENDERER.end();
 	}
 
@@ -57,7 +67,12 @@ public class BoxRenderSystem extends EntitySystem {
 
 		Color.argb8888ToColor( COLOR, colorComp.color );
 
-		RENDERER.setColor( COLOR );
+		RENDERER.setColor( COLOR.set(
+				COLOR.r,
+				COLOR.g,
+				COLOR.b,
+				alpha ));
+
 		RENDERER.rect(
 				boundsComp.rect.x,
 				boundsComp.rect.y,
