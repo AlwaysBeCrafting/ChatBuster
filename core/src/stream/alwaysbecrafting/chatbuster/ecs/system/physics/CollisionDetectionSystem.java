@@ -1,13 +1,22 @@
 package stream.alwaysbecrafting.chatbuster.ecs.system.physics;
 
+import com.badlogic.gdx.math.Rectangle;
+
+import java.util.stream.Stream;
+
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
+import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
 public class CollisionDetectionSystem extends EntitySystem {
+	//--------------------------------------------------------------------------
+
+	private final Rectangle INTERSECTION = new Rectangle();
+
 	//--------------------------------------------------------------------------
 
 	@Override protected boolean acceptEntity( Entity entity ) {
@@ -22,14 +31,18 @@ public class CollisionDetectionSystem extends EntitySystem {
 		CollisionComponent collisionComp = entity.get( CollisionComponent.class );
 		BoundingBoxComponent boundsComp = entity.get( BoundingBoxComponent.class );
 
-		engine.entityStream()
-				.filter( other -> other.has( CollisionComponent.class ))
-				.filter( other -> other.get( CollisionComponent.class ).sharesLayer( collisionComp ))
+		collisionComp.collisions.clear();
 
-				.filter( other -> other.has( BoundingBoxComponent.class ))
-				.filter( other -> other.get( BoundingBoxComponent.class ).intersects( boundsComp ))
+		Stream<Entity> eStream = engine.entityStream();
+		eStream = eStream.filter( other -> other.has( CollisionComponent.class ));
+		eStream = eStream.filter( other -> other.get( CollisionComponent.class ).sharesLayer( collisionComp ));
 
-				.forEach( other -> collisionComp.collisions.add( other ));
+		eStream = eStream.filter( other -> other.has( BoundingBoxComponent.class ));
+		eStream = eStream.filter( other -> other.get( BoundingBoxComponent.class ).intersects( boundsComp, INTERSECTION ));
+
+		eStream.forEach( other -> collisionComp.collisions.add( other ));
+
+		Log.d( collisionComp.collisions.size() + " collisions" );
 	}
 
 	//--------------------------------------------------------------------------

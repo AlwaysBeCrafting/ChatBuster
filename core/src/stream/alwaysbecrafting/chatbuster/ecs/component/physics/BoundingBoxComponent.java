@@ -40,8 +40,8 @@ public class BoundingBoxComponent {
 
 	//--------------------------------------------------------------------------
 
-	public boolean intersects( BoundingBoxComponent other ) {
-		return Intersector.intersectRectangles( rect, other.rect, null );
+	public boolean intersects( BoundingBoxComponent other, Rectangle intersection ) {
+		return Intersector.intersectRectangles( rect, other.rect, intersection );
 	}
 
 	//--------------------------------------------------------------------------
