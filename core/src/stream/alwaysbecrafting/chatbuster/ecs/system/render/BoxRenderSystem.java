@@ -7,7 +7,6 @@ import com.badlogic.gdx.math.Matrix4;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponent;
-import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
@@ -47,7 +46,6 @@ public class BoxRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
-		Log.d( "drawing a box" );
 		BoundingBoxComponent boundsComp = entity.get( BoundingBoxComponent.class );
 		ColorDrawComponent colorComp = entity.get( ColorDrawComponent.class );
 
