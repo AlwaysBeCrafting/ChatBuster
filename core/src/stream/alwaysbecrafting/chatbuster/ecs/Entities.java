@@ -27,11 +27,12 @@ public abstract class Entities {
 				new PositionComponent( x, y ),
 				new VelocityComponent( 0, 0 ),
 //				new GravityComponent( 0.5f ),
-				new BoundingBoxComponent( 7, 9, 26, 32 ),
+				new BoundingBoxComponent( 16, 23, 7, 0 ),
 
 				new CollisionComponent( 0b1 ),
 
-				new SpriteComponent( "guy.png", 32, 32, 16, 3 ));
+				new ColorDrawComponent( 0xff00ff00 ),
+				new SpriteComponent( "guy.png", 32, 32, 15, 3 ));
 	}
 
 	//--------------------------------------------------------------------------

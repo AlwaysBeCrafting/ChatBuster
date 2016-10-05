@@ -44,11 +44,11 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new CollisionDetectionSystem() );
 
 		engine.add( new BackgroundRenderSystem() );
-		engine.add( new BoxRenderSystem( matrix ));
 		engine.add( new SpriteRenderSystem( matrix ));
+		engine.add( new BoxRenderSystem( matrix ));
 
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
-		engine.add( Entities.makePlayerCharacter( 128, 0 ));
+		engine.add( Entities.makePlayerCharacter( 192, 128 ));
 	}
 
 	//--------------------------------------------------------------------------
