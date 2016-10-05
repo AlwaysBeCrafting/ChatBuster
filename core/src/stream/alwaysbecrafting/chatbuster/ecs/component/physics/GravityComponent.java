@@ -4,7 +4,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 public class GravityComponent {
 	//--------------------------------------------------------------------------
 
-	public float force = 1;
+	public double force = 1;
 
 	//--------------------------------------------------------------------------
 
@@ -12,7 +12,7 @@ public class GravityComponent {
 
 	//--------------------------------------------------------------------------
 
-	public GravityComponent( float force ) {
+	public GravityComponent( double force ) {
 		this.force = force;
 	}
 
