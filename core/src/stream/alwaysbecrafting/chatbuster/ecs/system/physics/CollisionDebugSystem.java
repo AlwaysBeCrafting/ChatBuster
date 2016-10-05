@@ -2,6 +2,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.system.physics;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponent;
+import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 
@@ -23,6 +24,10 @@ public class CollisionDebugSystem extends EntitySystem {
 
 		if ( collisionComp.collisions.isEmpty() ) colorComp.color = 0xff00ff00;
 		else                                      colorComp.color = 0xffff0000;
+
+		collisionComp.collisions.forEach( collision -> {
+			Log.d( collision.intersection.width + "x" + collision.intersection.height );
+		} );
 	}
 
 	//--------------------------------------------------------------------------

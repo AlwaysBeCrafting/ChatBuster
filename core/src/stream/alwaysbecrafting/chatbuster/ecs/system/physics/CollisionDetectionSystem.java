@@ -41,11 +41,27 @@ public class CollisionDetectionSystem extends EntitySystem {
 
 				.forEach( other -> {
 					Collision c = new Collision();
+					int centerX = (int)( INTERSECTION.x + ( INTERSECTION.width / 2 ));
+					int centerY = (int)( INTERSECTION.y + ( INTERSECTION.height / 2 ));
 					c.other = other;
-					c.intersectionWidth = (int)INTERSECTION.width;
-					c.intersectionHeight = (int)INTERSECTION.height;
+					c.intersection.set( INTERSECTION );
+					c.quadrant = getQuadrant( boundsComp.rect, centerX, centerY );
 					collisionComp.collisions.add( c );
 				});
+	}
+
+	//--------------------------------------------------------------------------
+
+	private static byte getQuadrant( Rectangle bounds, int x, int y ) {
+		float slope = 1f / bounds.getAspectRatio();
+		float centerX = bounds.x + ( bounds.width / 2 );
+		float centerY = bounds.y + ( bounds.height / 2 );
+		float relativeX = x - centerX;
+		float relativeY = y - centerY;
+
+		return (byte)(
+				(( relativeY > relativeX *  slope ) ? 0b01 : 0 )
+		|       (( relativeY > relativeX * -slope ) ? 0b10 : 0 ));
 	}
 
 	//--------------------------------------------------------------------------
