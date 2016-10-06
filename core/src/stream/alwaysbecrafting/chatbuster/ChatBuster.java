@@ -38,19 +38,23 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine = new GameEngine();
 
+
+
 //		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );
 
 		engine.add( new MovementSystem() );
 		engine.add( new GravitySystem() );
-		engine.add( new CollisionDetectionSystem() );
 
+		engine.add( new CollisionDetectionSystem() );
 		engine.add( new CollisionDebugSystem() );
 		engine.add( new CharacterCollisionSystem() );
 
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem( matrix ));
 		engine.add( new BoxRenderSystem( matrix ));
+
+
 
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
 		engine.add( Entities.makePlayerCharacter( 60, 39 ));
