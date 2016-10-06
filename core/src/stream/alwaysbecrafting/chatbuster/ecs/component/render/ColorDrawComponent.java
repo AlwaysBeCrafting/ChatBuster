@@ -1,18 +1,18 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component.render;
 
 //==============================================================================
-public class ColorFillComponent {
+public class ColorDrawComponent {
 	//--------------------------------------------------------------------------
 
 	public int color = 0xffffffff;
 
 	//--------------------------------------------------------------------------
 
-	public ColorFillComponent() {}
+	public ColorDrawComponent() {}
 
 	//--------------------------------------------------------------------------
 
-	public ColorFillComponent( int color ) {
+	public ColorDrawComponent( int color ) {
 		this.color = color;
 	}
 

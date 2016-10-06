@@ -8,10 +8,9 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.logic.ChatControllerComp
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.CollisionComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.physics.GravityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorFillComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
@@ -26,13 +25,14 @@ public abstract class Entities {
 //				new AllyGunComponent(),
 
 				new PositionComponent( x, y ),
-				new VelocityComponent( 0, 7 ),
-				new GravityComponent( 0.5f ),
-				new BoundingBoxComponent( 7, 9, 26, 32 ),
+				new VelocityComponent( 0, 0 ),
+//				new GravityComponent( 0.5f ),
+				new BoundingBoxComponent( 16, 23, 7, 0 ),
 
 				new CollisionComponent( 0b1 ),
 
-				new SpriteComponent( "guy.png", 32, 32 ));
+				new ColorDrawComponent( 0xff00ff00 ),
+				new SpriteComponent( "guy.png", 32, 32, 15, 3 ));
 	}
 
 	//--------------------------------------------------------------------------
@@ -60,10 +60,11 @@ public abstract class Entities {
 
 	//--------------------------------------------------------------------------
 
-	public static Entity makeWall( int left, int bottom, int right, int top ) {
+	public static Entity makeWall( int x, int y, int width, int height ) {
 		return new Entity(
-				new BoundingBoxComponent( left, bottom, right, top ),
-				new ColorFillComponent( 0xff000044 ),
+				new PositionComponent( x, y ),
+				new BoundingBoxComponent( width, height, 0, 0 ),
+				new ColorDrawComponent( 0xffffffff ),
 				new CollisionComponent( 0b1 ));
 	}
 

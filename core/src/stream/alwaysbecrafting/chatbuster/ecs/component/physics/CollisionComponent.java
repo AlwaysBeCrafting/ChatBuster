@@ -3,14 +3,14 @@ package stream.alwaysbecrafting.chatbuster.ecs.component.physics;
 import java.util.ArrayList;
 import java.util.List;
 
-import stream.alwaysbecrafting.flare.Entity;
+import stream.alwaysbecrafting.chatbuster.data.Collision;
 
 //==============================================================================
 public class CollisionComponent {
 	//--------------------------------------------------------------------------
 
 	public int layers;
-	public List<Entity> collisions = new ArrayList<>();
+	public List<Collision> collisions = new ArrayList<>();
 
 	//--------------------------------------------------------------------------
 

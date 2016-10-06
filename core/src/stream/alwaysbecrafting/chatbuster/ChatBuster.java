@@ -4,8 +4,11 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
-import stream.alwaysbecrafting.chatbuster.ecs.system.logic.ChatSpawnerSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BoundingBoxPositioningSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CharacterCollisionSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDebugSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDetectionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.GravitySystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BackgroundRenderSystem;
@@ -36,18 +39,25 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine = new GameEngine();
 
-		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
+
+//		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );
 
-		engine.add( new MovementSystem() );
 		engine.add( new GravitySystem() );
+		engine.add( new MovementSystem() );
+		engine.add( new BoundingBoxPositioningSystem() );
+
+		engine.add( new CollisionDetectionSystem() );
+		engine.add( new CollisionDebugSystem() );
+		engine.add( new CharacterCollisionSystem() );
 
 		engine.add( new BackgroundRenderSystem() );
-		engine.add( new BoxRenderSystem( matrix ));
 		engine.add( new SpriteRenderSystem( matrix ));
+		engine.add( new BoxRenderSystem( matrix ));
 
-		engine.add( Entities.makePlayerCharacter( 100, 100 ));
+
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
+		engine.add( Entities.makePlayerCharacter( 60, 39 ));
 	}
 
 	//--------------------------------------------------------------------------

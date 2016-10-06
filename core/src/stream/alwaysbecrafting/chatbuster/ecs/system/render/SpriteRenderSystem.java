@@ -1,6 +1,5 @@
 package stream.alwaysbecrafting.chatbuster.ecs.system.render;
 
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Matrix4;
 
@@ -41,13 +40,13 @@ public class SpriteRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
-		Sprite            sprite   = entity.get( SpriteComponent.class   ).sprite;
-		PositionComponent position = entity.get( PositionComponent.class );
+		SpriteComponent   spriteComp   = entity.get( SpriteComponent.class   );
+		PositionComponent positionComp = entity.get( PositionComponent.class );
 
 		BATCHER.draw(
-				sprite,
-				position.x,
-				position.y );
+				spriteComp.sprite,
+				positionComp.x - spriteComp.origin.x,
+				positionComp.y - spriteComp.origin.y );
 	}
 
 	//--------------------------------------------------------------------------
