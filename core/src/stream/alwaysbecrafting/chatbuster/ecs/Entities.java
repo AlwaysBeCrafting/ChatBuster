@@ -4,6 +4,7 @@ import org.pircbotx.hooks.events.MessageEvent;
 
 import java.util.Random;
 
+import stream.alwaysbecrafting.chatbuster.data.SpriteMap;
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.ChatControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.BoundingBoxComponent;
@@ -20,10 +21,19 @@ public abstract class Entities {
 	//--------------------------------------------------------------------------
 
 	public static Entity makeCharacter( int x, int y ) {
-		return new Entity(
-//				new AllyMovementComponent(),
-//				new AllyGunComponent(),
+		SpriteMap spriteMap = new SpriteMap( 32, 32 );
+		spriteMap.mapCell( 0, 0, 0, 0 );
+		spriteMap.mapCell( 1, 0, 1, 0 );
+		spriteMap.mapCell( 2, 0, 2, 0 );
+		spriteMap.mapCell( 3, 0, 3, 0 );
 
+		spriteMap.mapCell( 4, 0, 0, 1 );
+		spriteMap.mapRow( 5, 1, 1, 3 );
+
+		spriteMap.mapRow( 6, 0, 2, 4 );
+		spriteMap.mapRow( 7, 0, 3, 4 );
+
+		return new Entity(
 				new PositionComponent( x, y ),
 				new VelocityComponent( 0, 0 ),
 //				new GravityComponent( 0.5f ),
@@ -32,7 +42,7 @@ public abstract class Entities {
 				new CollisionComponent( 0b1 ),
 
 				new ColorDrawComponent( 0xff00ff00 ),
-				new SpriteComponent( "guy.png", 32, 32, 15, 3 ));
+				new SpriteComponent( "guy.png", spriteMap, 15, 3 ));
 	}
 
 	//--------------------------------------------------------------------------
