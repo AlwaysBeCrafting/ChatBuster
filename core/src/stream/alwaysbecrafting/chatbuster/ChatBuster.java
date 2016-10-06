@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
 import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CharacterCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDebugSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDetectionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.GravitySystem;
@@ -45,6 +46,7 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new CollisionDetectionSystem() );
 
 		engine.add( new CollisionDebugSystem() );
+		engine.add( new CharacterCollisionSystem() );
 
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem( matrix ));
