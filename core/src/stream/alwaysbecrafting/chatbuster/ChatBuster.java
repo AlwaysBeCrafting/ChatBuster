@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
 import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BoundingBoxPositioningSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CharacterCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDebugSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDetectionSystem;
@@ -39,12 +40,12 @@ public class ChatBuster extends ApplicationAdapter {
 		engine = new GameEngine();
 
 
-
 //		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );
 
-		engine.add( new MovementSystem() );
 		engine.add( new GravitySystem() );
+		engine.add( new MovementSystem() );
+		engine.add( new BoundingBoxPositioningSystem() );
 
 		engine.add( new CollisionDetectionSystem() );
 		engine.add( new CollisionDebugSystem() );
@@ -53,7 +54,6 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem( matrix ));
 		engine.add( new BoxRenderSystem( matrix ));
-
 
 
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));

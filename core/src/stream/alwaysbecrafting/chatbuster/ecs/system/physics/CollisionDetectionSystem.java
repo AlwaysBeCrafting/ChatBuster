@@ -52,7 +52,7 @@ public class CollisionDetectionSystem extends EntitySystem {
 
 	//--------------------------------------------------------------------------
 
-	private static byte getQuadrant( Rectangle bounds, int x, int y ) {
+	static byte getQuadrant( Rectangle bounds, int x, int y ) {
 		float slope = 1f / bounds.getAspectRatio();
 		float centerX = bounds.x + ( bounds.width / 2 );
 		float centerY = bounds.y + ( bounds.height / 2 );
