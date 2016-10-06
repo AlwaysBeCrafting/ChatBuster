@@ -13,10 +13,17 @@ import javafx.util.Pair;
 public class SpriteMap {
 	//--------------------------------------------------------------------------
 
-	int cellWidth;
-	int cellHeight;
+	private final int CELL_WIDTH;
+	private final int CELL_HEIGHT;
 
 	private final SortedMap<Integer,Map<Integer,Pair<Integer,Integer>>> CELLS = new TreeMap<>();
+
+	//--------------------------------------------------------------------------
+
+	public SpriteMap( int cellWidth, int cellHeight ) {
+		CELL_WIDTH = cellWidth;
+		CELL_HEIGHT = cellHeight;
+	}
 
 	//--------------------------------------------------------------------------
 
@@ -29,7 +36,7 @@ public class SpriteMap {
 
 	public void mapRow( int spriteId, int startX, int startY, int cellCount ) {
 		IntStream.range( 0, cellCount ).forEach( (index) -> {
-			mapCell( spriteId, index , startX + ( cellWidth * index ), startY );
+			mapCell( spriteId, index , startX + ( CELL_WIDTH * index ), startY );
 		});
 	}
 
@@ -37,7 +44,7 @@ public class SpriteMap {
 
 	public void mapColumn( int spriteId, int startX, int startY, int cellCount ) {
 		IntStream.range( 0, cellCount ).forEach( (index) -> {
-			mapCell( spriteId, index, startX, startY + ( cellHeight * index ));
+			mapCell( spriteId, index, startX, startY + ( CELL_HEIGHT * index ));
 		});
 	}
 
@@ -45,10 +52,10 @@ public class SpriteMap {
 
 	public void applyRegion( Sprite sprite, int spriteId, int index ) {
 		sprite.setRegion(
-				CELLS.get( spriteId ).get( index ).getKey() * cellWidth,
-				CELLS.get( spriteId ).get( index ).getValue() * cellHeight,
-				cellWidth,
-				cellHeight );
+				CELLS.get( spriteId ).get( index ).getKey() * CELL_WIDTH,
+				CELLS.get( spriteId ).get( index ).getValue() * CELL_HEIGHT,
+				CELL_WIDTH,
+				CELL_HEIGHT );
 	}
 
 	//--------------------------------------------------------------------------
