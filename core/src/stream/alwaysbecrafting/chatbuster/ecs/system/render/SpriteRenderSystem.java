@@ -5,12 +5,10 @@ import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.TransformComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
-
-import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.FALL;
-import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.SHOOT;
 
 //==============================================================================
 public class SpriteRenderSystem extends EntitySystem {
@@ -46,10 +44,19 @@ public class SpriteRenderSystem extends EntitySystem {
 		SpriteComponent   spriteComp   = entity.get( SpriteComponent.class   );
 		PositionComponent positionComp = entity.get( PositionComponent.class );
 
+		int translateY = (int)-spriteComp.origin.y;
+		int translateX = (int)-spriteComp.origin.x;
+
+		if ( entity.has( TransformComponent.class )) {
+			TransformComponent transComp = entity.get( TransformComponent.class );
+			translateX += transComp.translateX;
+			translateY += transComp.translateY;
+		}
+
 		BATCHER.draw(
 				spriteComp.sprite,
-				positionComp.x - spriteComp.origin.x,
-				positionComp.y - spriteComp.origin.y );
+				positionComp.x + translateX,
+				positionComp.y + translateY );
 	}
 
 	//--------------------------------------------------------------------------
