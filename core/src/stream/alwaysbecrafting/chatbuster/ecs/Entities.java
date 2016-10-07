@@ -22,12 +22,12 @@ public abstract class Entities {
 
 	public static Entity makeCharacter( int x, int y ) {
 		SpriteMap spriteMap = new SpriteMap( 32, 32 );
-		spriteMap.mapCell( 0, 0, 0, 0 );
-		spriteMap.mapCell( 1, 0, 1, 0 );
-		spriteMap.mapCell( 2, 0, 2, 0 );
-		spriteMap.mapCell( 3, 0, 3, 0 );
+		spriteMap.mapCell( 0, 0, 0 );
+		spriteMap.mapCell( 1, 1, 0 );
+		spriteMap.mapCell( 2, 2, 0 );
+		spriteMap.mapCell( 3, 3, 0 );
 
-		spriteMap.mapCell( 4, 0, 0, 1 );
+		spriteMap.mapCell( 4, 0, 1 );
 		spriteMap.mapRow( 5, 1, 1, 3 );
 
 		spriteMap.mapRow( 6, 0, 2, 4 );

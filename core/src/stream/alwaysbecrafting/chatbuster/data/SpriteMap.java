@@ -8,6 +8,7 @@ import java.util.TreeMap;
 import java.util.stream.IntStream;
 
 import javafx.util.Pair;
+import stream.alwaysbecrafting.chatbuster.util.Log;
 
 //==============================================================================
 public class SpriteMap {
@@ -27,41 +28,47 @@ public class SpriteMap {
 
 	//--------------------------------------------------------------------------
 
-	public void mapCell( int spriteId, int cellX, int cellY ) {
-		mapCell( spriteId, cellX, cellY, 0 );
+	public void mapCell( int index, int cellX, int cellY ) {
+		mapCell( index, cellX, cellY, 0 );
 	}
 
 	//--------------------------------------------------------------------------
 
-	public void mapRow( int spriteId, int startX, int startY, int cellCount ) {
-		IntStream.range( 0, cellCount ).forEach( (index) -> {
-			mapCell( spriteId, startX + ( CELL_WIDTH * index ), startY, index );
+	public void mapRow( int index, int startX, int startY, int cellCount ) {
+		IntStream.range( 0, cellCount ).forEach( (frame) -> {
+			mapCell( index, startX + ( CELL_WIDTH * frame ), startY, frame );
 		});
 	}
 
 	//--------------------------------------------------------------------------
 
-	public void mapColumn( int spriteId, int startX, int startY, int cellCount ) {
-		IntStream.range( 0, cellCount ).forEach( (index) -> {
-			mapCell( spriteId, startX, startY + ( CELL_HEIGHT * index ), index );
+	public void mapColumn( int index, int startX, int startY, int cellCount ) {
+		IntStream.range( 0, cellCount ).forEach( (frame) -> {
+			mapCell( index, startX, startY + ( CELL_HEIGHT * frame ), frame );
 		});
 	}
 
 	//--------------------------------------------------------------------------
 
-	private void mapCell( int spriteId, int cellX, int cellY, int index ) {
-		CELLS.computeIfAbsent( spriteId, (i) -> new TreeMap<>() )
-				.put( index, new Pair<>( cellX, cellY ));
+	private void mapCell( int index, int cellX, int cellY, int frame ) {
+		CELLS.computeIfAbsent( index, (i) -> new TreeMap<>() )
+				.put( frame, new Pair<>( cellX, cellY ));
+
+		if ( index == 2 ) {
+			Log.d( index + " - " + frame + " - " + cellX + "," + cellY );
+		}
 	}
 
 	//--------------------------------------------------------------------------
 
-	public void applyRegion( Sprite sprite, int spriteId, int index ) {
-		sprite.setRegion(
-				CELLS.get( spriteId ).get( index ).getKey() * CELL_WIDTH,
-				CELLS.get( spriteId ).get( index ).getValue() * CELL_HEIGHT,
-				CELL_WIDTH,
-				CELL_HEIGHT );
+	public void applyRegion( Sprite sprite, int index, int frame ) {
+		final int cellX = CELLS.get( index ).get( frame ).getKey();
+		final int cellY = CELLS.get( index ).get( frame ).getValue();
+
+		final int left = cellX * CELL_WIDTH;
+		final int top  = cellY * CELL_HEIGHT;
+
+		sprite.setRegion( left, top, CELL_WIDTH, CELL_HEIGHT );
 	}
 
 	//--------------------------------------------------------------------------

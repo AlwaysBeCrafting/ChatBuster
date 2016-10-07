@@ -14,20 +14,20 @@ public class SpriteComponent {
 
 	public Vector2 origin = new Vector2();
 
-	private final SpriteMap SPRITE_MAP;
+	public SpriteMap spriteMap;
 
 	//--------------------------------------------------------------------------
 
 	public SpriteComponent( String path ) {
 		sprite = new Sprite( new Texture( path ));
-		SPRITE_MAP = new SpriteMap( (int)sprite.getWidth(), (int)sprite.getHeight() );
+		spriteMap = new SpriteMap( (int)sprite.getWidth(), (int)sprite.getHeight() );
 	}
 
 	//--------------------------------------------------------------------------
 
 	public SpriteComponent( String path, SpriteMap spriteMap ) {
 		sprite = new Sprite( new Texture( path ));
-		SPRITE_MAP = spriteMap;
+		this.spriteMap = spriteMap;
 	}
 
 	//--------------------------------------------------------------------------
