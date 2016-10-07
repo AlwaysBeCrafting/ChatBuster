@@ -9,6 +9,9 @@ import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
+import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.FALL;
+import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.SHOOT;
+
 //==============================================================================
 public class SpriteRenderSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
@@ -43,7 +46,7 @@ public class SpriteRenderSystem extends EntitySystem {
 		SpriteComponent   spriteComp   = entity.get( SpriteComponent.class   );
 		PositionComponent positionComp = entity.get( PositionComponent.class );
 
-		spriteComp.spriteMap.applyRegion( spriteComp.sprite, 0, 0 );
+		spriteComp.spriteMap.applyRegion( spriteComp.sprite, FALL | SHOOT, 0 );
 
 		BATCHER.draw(
 				spriteComp.sprite,
