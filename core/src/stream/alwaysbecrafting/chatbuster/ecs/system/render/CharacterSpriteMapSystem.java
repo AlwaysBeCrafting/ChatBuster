@@ -35,10 +35,13 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
+		SpriteComponent spriteComp = entity.get( SpriteComponent.class );
 		byte state = 0;
 
 		state |= entity.has( GravityComponent.class ) ? FALL : 0;
 		state |= entity.has( GunShootStateComponent.class ) ? SHOOT : 0;
+
+		spriteComp.spriteMap.applyRegion( spriteComp.sprite, state, 0 );
 	}
 
 	//--------------------------------------------------------------------------

@@ -13,6 +13,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.system.physics.GravitySystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BackgroundRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BoxRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.SpriteRenderSystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
@@ -50,6 +51,8 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new CollisionDetectionSystem() );
 		engine.add( new CollisionDebugSystem() );
 		engine.add( new CharacterCollisionSystem() );
+
+		engine.add( new CharacterSpriteMapSystem() );
 
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem( matrix ));

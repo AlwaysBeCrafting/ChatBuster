@@ -46,8 +46,6 @@ public class SpriteRenderSystem extends EntitySystem {
 		SpriteComponent   spriteComp   = entity.get( SpriteComponent.class   );
 		PositionComponent positionComp = entity.get( PositionComponent.class );
 
-		spriteComp.spriteMap.applyRegion( spriteComp.sprite, FALL | SHOOT, 0 );
-
 		BATCHER.draw(
 				spriteComp.sprite,
 				positionComp.x - spriteComp.origin.x,
