@@ -13,6 +13,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponen
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
 import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.FALL;
@@ -45,6 +46,8 @@ public abstract class Entities {
 				new VelocityComponent( 0, 0 ),
 //				new GravityComponent( 0.5f ),
 				new BoundingBoxComponent( 16, 23, 7, 0 ),
+
+				new CharacterZorpStateComponent(),
 
 				new CollisionComponent( 0b1 ),
 

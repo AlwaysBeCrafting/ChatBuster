@@ -9,9 +9,9 @@ public class CharacterZorpStateComponent {
 
 	//--------------------------------------------------------------------------
 
-	public double durationRemaining;
+	public double durationRemaining = 1;
 
-	public int direction;
+	public int direction = IN;
 
 	//--------------------------------------------------------------------------
 }
