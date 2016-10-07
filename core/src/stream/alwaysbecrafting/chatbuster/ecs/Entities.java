@@ -13,6 +13,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponen
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.TransformComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
@@ -51,6 +52,7 @@ public abstract class Entities {
 
 				new CollisionComponent( 0b1 ),
 
+				new TransformComponent(),
 				new ColorDrawComponent( 0xff00ff00 ),
 				new SpriteComponent( "guy.png", spriteMap, 15, 3 ));
 	}
