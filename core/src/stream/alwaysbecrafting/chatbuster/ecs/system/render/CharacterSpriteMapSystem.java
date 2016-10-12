@@ -4,6 +4,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.logic.ChatControllerComp
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.GravityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.render.FrameAnimationComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterHitstunStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
@@ -29,7 +30,8 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 
 	@Override protected boolean acceptEntity( Entity entity ) {
 		return entity.hasAll(
-				SpriteComponent.class )
+				SpriteComponent.class,
+				FrameAnimationComponent.class )
 
 		&& entity.hasAny(
 				ChatControllerComponent.class,
@@ -40,6 +42,7 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
 		SpriteComponent spriteComp = entity.get( SpriteComponent.class );
+		FrameAnimationComponent frameComp = entity.get( FrameAnimationComponent.class );
 		byte state = 0;
 
 		state = entity.has( CharacterHitstunStateComponent.class ) ? HITSTUN : state;
@@ -50,7 +53,16 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 
 		state = (( entity.get( VelocityComponent.class ).h != 0 ) && ( state & FALL ) == 0 ) ? RUN : state;
 
-		spriteComp.spriteMap.applyRegion( spriteComp.sprite, state, 0 );
+
+		int frame = 0;
+		if ( state == RUN ) {
+			frame = frameComp.currentFrame();
+			frameComp.loopElapsed = ( frameComp.loopElapsed + deltaTime ) % frameComp.loopDuration();
+
+		} else frameComp.loopElapsed = 0;
+
+
+		spriteComp.spriteMap.applyRegion( spriteComp.sprite, state, frame );
 		if ( entity.has( HeadingComponent.class )) {
 			spriteComp.flipped = entity.get( HeadingComponent.class ).heading == HeadingComponent.HEADING_LEFT;
 		}
