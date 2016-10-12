@@ -14,8 +14,8 @@ import stream.alwaysbecrafting.chatbuster.util.Log;
 public class SpriteMap {
 	//--------------------------------------------------------------------------
 
-	private final int CELL_WIDTH;
-	private final int CELL_HEIGHT;
+	public final int CELL_WIDTH;
+	public final int CELL_HEIGHT;
 
 	private final SortedMap<Integer,Map<Integer,Pair<Integer,Integer>>> CELLS = new TreeMap<>();
 

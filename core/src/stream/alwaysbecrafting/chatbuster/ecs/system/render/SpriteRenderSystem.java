@@ -44,8 +44,8 @@ public class SpriteRenderSystem extends EntitySystem {
 		SpriteComponent   spriteComp   = entity.get( SpriteComponent.class   );
 		PositionComponent positionComp = entity.get( PositionComponent.class );
 
-		int translateY = (int)-spriteComp.origin.y;
 		int translateX = (int)-spriteComp.origin.x;
+		int translateY = (int)-spriteComp.origin.y;
 
 		if ( entity.has( TransformComponent.class )) {
 			TransformComponent transComp = entity.get( TransformComponent.class );
@@ -56,7 +56,14 @@ public class SpriteRenderSystem extends EntitySystem {
 		BATCHER.draw(
 				spriteComp.sprite,
 				positionComp.x + translateX,
-				positionComp.y + translateY );
+				positionComp.y + translateY,
+				spriteComp.origin.x,
+				spriteComp.origin.y,
+				spriteComp.spriteMap.CELL_WIDTH,
+				spriteComp.spriteMap.CELL_HEIGHT,
+				spriteComp.flipped ? -1 : 1,
+				1,
+				0 );
 	}
 
 	//--------------------------------------------------------------------------
