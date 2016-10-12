@@ -3,6 +3,7 @@ package stream.alwaysbecrafting.chatbuster.ecs.system.render;
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.ChatControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.GravityComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterHitstunStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
@@ -45,6 +46,8 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 
 		state |= entity.has( GravityComponent.class ) ? FALL : 0;
 		state |= entity.has( GunShootStateComponent.class ) ? SHOOT : 0;
+
+		state = (( entity.get( VelocityComponent.class ).h != 0 ) && ( state & FALL ) == 0 ) ? RUN : state;
 
 		spriteComp.spriteMap.applyRegion( spriteComp.sprite, state, 0 );
 	}
