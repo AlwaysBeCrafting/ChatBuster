@@ -8,6 +8,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterHitstunStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.GunShootStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 
@@ -50,6 +51,9 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 		state = (( entity.get( VelocityComponent.class ).h != 0 ) && ( state & FALL ) == 0 ) ? RUN : state;
 
 		spriteComp.spriteMap.applyRegion( spriteComp.sprite, state, 0 );
+		if ( entity.has( HeadingComponent.class )) {
+			spriteComp.flipped = entity.get( HeadingComponent.class ).heading == HeadingComponent.HEADING_LEFT;
+		}
 	}
 
 	//--------------------------------------------------------------------------
