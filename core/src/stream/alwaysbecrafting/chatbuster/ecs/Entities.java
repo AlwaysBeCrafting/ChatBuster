@@ -58,7 +58,7 @@ public abstract class Entities {
 				new TransformComponent(),
 				new ColorDrawComponent( 0xff00ff00 ),
 				new SpriteComponent( "guy.png", spriteMap, 15, 3 ),
-				new FrameAnimationComponent( 4, 12 ));
+				new FrameAnimationComponent( 4, 6 ));
 	}
 
 	//--------------------------------------------------------------------------
