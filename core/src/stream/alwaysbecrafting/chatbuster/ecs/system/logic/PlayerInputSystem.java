@@ -30,15 +30,29 @@ public class PlayerInputSystem extends EntitySystem {
 		PlayerControllerComponent controlComp = entity.get( PlayerControllerComponent.class );
 		VelocityComponent veloComp = entity.get( VelocityComponent.class );
 
+
 		if ( Gdx.input.isKeyJustPressed( controlComp.key_a )
 		&&   !entity.has( GravityComponent.class )) {
 			veloComp.v = 7;
 			entity.add( new GravityComponent( 0.5 ));
 		}
 
+
 		if ( Gdx.input.isKeyJustPressed( controlComp.key_b )) {
 			Log.d( "shoot" );
 		}
+
+
+		boolean leftPressed  = Gdx.input.isKeyPressed( controlComp.key_left  );
+		boolean rightPressed = Gdx.input.isKeyPressed( controlComp.key_right );
+
+		if ( leftPressed && !rightPressed ) {
+			veloComp.h = -2;
+
+		} else if ( rightPressed && !leftPressed ) {
+			veloComp.h = 2;
+
+		} else veloComp.h = 0;
 	}
 
 	//--------------------------------------------------------------------------
