@@ -36,7 +36,7 @@ public class SpriteMap {
 
 	public void mapRow( int index, int startX, int startY, int cellCount ) {
 		IntStream.range( 0, cellCount ).forEach( (frame) -> {
-			mapCell( index, startX + ( CELL_WIDTH * frame ), startY, frame );
+			mapCell( index, startX + frame, startY, frame );
 		});
 	}
 
@@ -44,7 +44,7 @@ public class SpriteMap {
 
 	public void mapColumn( int index, int startX, int startY, int cellCount ) {
 		IntStream.range( 0, cellCount ).forEach( (frame) -> {
-			mapCell( index, startX, startY + ( CELL_HEIGHT * frame ), frame );
+			mapCell( index, startX, startY + frame, frame );
 		});
 	}
 
@@ -53,10 +53,6 @@ public class SpriteMap {
 	private void mapCell( int index, int cellX, int cellY, int frame ) {
 		CELLS.computeIfAbsent( index, (i) -> new TreeMap<>() )
 				.put( frame, new Pair<>( cellX, cellY ));
-
-		if ( index == 2 ) {
-			Log.d( index + " - " + frame + " - " + cellX + "," + cellY );
-		}
 	}
 
 	//--------------------------------------------------------------------------
@@ -69,6 +65,8 @@ public class SpriteMap {
 		final int top  = cellY * CELL_HEIGHT;
 
 		sprite.setRegion( left, top, CELL_WIDTH, CELL_HEIGHT );
+
+		Log.d( left + ", " + top + " | " + CELL_WIDTH + "x" + CELL_HEIGHT );
 	}
 
 	//--------------------------------------------------------------------------
