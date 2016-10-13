@@ -17,6 +17,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.TransformComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.LifespanComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
 import static stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent.HEADING_LEFT;
@@ -110,6 +111,7 @@ public abstract class Entities {
 				new BoundingBoxComponent( 16, 10, 8, 5 ),
 				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),
 
+				new LifespanComponent( 1 ),
 
 				new SpriteComponent( "bullet.png", 8, 8 ),
 				new ColorDrawComponent() );
