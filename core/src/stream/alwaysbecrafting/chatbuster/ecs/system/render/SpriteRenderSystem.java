@@ -6,6 +6,7 @@ import com.badlogic.gdx.math.Matrix4;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.TransformComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 import stream.alwaysbecrafting.flare.GameEngine;
@@ -53,6 +54,11 @@ public class SpriteRenderSystem extends EntitySystem {
 			translateY += transComp.translateY;
 		}
 
+		byte heading = 1;
+		if ( entity.has( HeadingComponent.class )) {
+			heading = entity.get( HeadingComponent.class ).heading;
+		}
+
 		BATCHER.draw(
 				spriteComp.sprite,
 				positionComp.x + translateX,
@@ -61,7 +67,7 @@ public class SpriteRenderSystem extends EntitySystem {
 				spriteComp.origin.y,
 				spriteComp.spriteMap.CELL_WIDTH,
 				spriteComp.spriteMap.CELL_HEIGHT,
-				spriteComp.flipped ? -1 : 1,
+				heading,
 				1,
 				0 );
 	}

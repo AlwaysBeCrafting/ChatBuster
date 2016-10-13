@@ -14,8 +14,6 @@ public class SpriteComponent {
 	public Vector2 origin = new Vector2();
 	public SpriteMap spriteMap;
 
-	public boolean flipped = false;
-
 	//--------------------------------------------------------------------------
 
 	public SpriteComponent( String path ) {
