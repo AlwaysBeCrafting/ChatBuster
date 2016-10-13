@@ -56,7 +56,7 @@ public abstract class Entities {
 
 				new CharacterZorpStateComponent(),
 
-				new CollisionComponent( 0b1 ),
+				new CollisionComponent( 0b1, 0b0 ),
 
 				new TransformComponent(),
 				new ColorDrawComponent( 0xff00ff00 ),
@@ -94,7 +94,7 @@ public abstract class Entities {
 				new PositionComponent( x, y ),
 				new BoundingBoxComponent( width, height, 0, 0 ),
 				new ColorDrawComponent( 0xffffffff ),
-				new CollisionComponent( 0b1 ));
+				new CollisionComponent( 0b0, 0b1 ));
 	}
 
 	//--------------------------------------------------------------------------
@@ -106,7 +106,7 @@ public abstract class Entities {
 				new PositionComponent( x, y ),
 				new VelocityComponent( 14 * headingSign, 0 ),
 
-				new CollisionComponent( 0b0 ),
+				new CollisionComponent( 0b10, 0b10 ),
 
 				new BoundingBoxComponent( 16, 10, 8, 5 ),
 				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),

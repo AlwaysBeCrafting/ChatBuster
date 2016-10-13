@@ -34,7 +34,7 @@ public class CollisionDetectionSystem extends EntitySystem {
 		engine.entityStream()
 				.filter( other -> other != entity )
 				.filter( other -> other.has( CollisionComponent.class ))
-				.filter( other -> other.get( CollisionComponent.class ).sharesLayer( collisionComp ))
+				.filter( other -> collisionComp.canCollide( other.get( CollisionComponent.class )))
 
 				.filter( other -> other.has( BoundingBoxComponent.class ))
 				.filter( other -> other.get( BoundingBoxComponent.class ).intersects( boundsComp, INTERSECTION ))

@@ -9,19 +9,20 @@ import stream.alwaysbecrafting.chatbuster.data.Collision;
 public class CollisionComponent {
 	//--------------------------------------------------------------------------
 
-	public int layers;
+	public int activeLayers, passiveLayers;
 	public List<Collision> collisions = new ArrayList<>();
 
 	//--------------------------------------------------------------------------
 
-	public CollisionComponent( int layers ) {
-		this.layers = layers;
+	public CollisionComponent( int activeLayers, int passiveLayers ) {
+		this.activeLayers = activeLayers;
+		this.passiveLayers = passiveLayers;
 	}
 
 	//--------------------------------------------------------------------------
 
-	public boolean sharesLayer( CollisionComponent other ) {
-		return ( layers & other.layers ) != 0;
+	public boolean canCollide( CollisionComponent other ) {
+		return ( activeLayers & other.passiveLayers ) != 0;
 	}
 
 	//--------------------------------------------------------------------------
