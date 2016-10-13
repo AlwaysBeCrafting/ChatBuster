@@ -8,7 +8,6 @@ import java.util.TreeMap;
 import java.util.stream.IntStream;
 
 import javafx.util.Pair;
-import stream.alwaysbecrafting.chatbuster.util.Log;
 
 //==============================================================================
 public class SpriteMap {
@@ -65,8 +64,6 @@ public class SpriteMap {
 		final int top  = cellY * CELL_HEIGHT;
 
 		sprite.setRegion( left, top, CELL_WIDTH, CELL_HEIGHT );
-
-		Log.d( left + ", " + top + " | " + CELL_WIDTH + "x" + CELL_HEIGHT );
 	}
 
 	//--------------------------------------------------------------------------
