@@ -19,6 +19,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.system.render.SpriteRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.state.CharacterStateSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.state.GunStateSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.state.LifespanSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.stats.DamageSystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
@@ -61,6 +62,8 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine.add( new CharacterStateSystem() );
 		engine.add( new GunStateSystem() );
+
+		engine.add( new DamageSystem() );
 
 		engine.add( new CharacterSpriteMapSystem() );
 

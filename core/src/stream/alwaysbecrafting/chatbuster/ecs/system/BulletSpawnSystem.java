@@ -20,7 +20,6 @@ public class BulletSpawnSystem extends GameSystem {
 		timeToNextBullet -= deltaTime;
 
 		if ( timeToNextBullet <= 0 ) {
-			Log.d( "Create bullet" );
 			engine.add( Entities.makeEnemyBullet( 300, 48, HEADING_LEFT ));
 			timeToNextBullet = 5;
 		}
