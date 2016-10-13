@@ -49,12 +49,12 @@ public class PlayerInputSystem extends EntitySystem {
 		if ( Gdx.input.isKeyJustPressed( controlComp.key_b )) {
 			entity.getEngine().add( Entities.makeCharacterBullet(
 					positionComp.x,
-					positionComp.y + 10,
+					positionComp.y + 13,
 					headingComp.heading
 			));
 
 			entity.add( new GunShootStateComponent() );
-			entity.get( GunShootStateComponent.class ).durationRemaning = 0.5;
+			entity.get( GunShootStateComponent.class ).durationRemaning = 0.2;
 		}
 
 
