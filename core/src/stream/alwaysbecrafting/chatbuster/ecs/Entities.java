@@ -105,10 +105,14 @@ public abstract class Entities {
 				new PositionComponent( x, y ),
 				new VelocityComponent( 14 * headingSign, 0 ),
 
+				new CollisionComponent( 0b0 ),
+
 				new BoundingBoxComponent( 16, 10, 8, 5 ),
 				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),
 
-				new SpriteComponent( "bullet.png", 8, 8 ));
+
+				new SpriteComponent( "bullet.png", 8, 8 ),
+				new ColorDrawComponent() );
 	}
 
 	//--------------------------------------------------------------------------
