@@ -9,6 +9,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponen
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterHitstunStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.GunShootStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
@@ -51,6 +52,9 @@ public class PlayerInputSystem extends EntitySystem {
 					positionComp.y + 10,
 					headingComp.heading
 			));
+
+			entity.add( new GunShootStateComponent() );
+			entity.get( GunShootStateComponent.class ).durationRemaning = 0.5;
 		}
 
 

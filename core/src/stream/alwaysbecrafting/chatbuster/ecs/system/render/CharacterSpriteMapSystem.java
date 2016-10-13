@@ -48,13 +48,13 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 		state = entity.has( CharacterZorpStateComponent.class ) ? ZORP : state;
 
 		state |= entity.has( GravityComponent.class ) ? FALL : 0;
-		state |= entity.has( GunShootStateComponent.class ) ? SHOOT : 0;
 
 		state = (( entity.get( VelocityComponent.class ).h != 0 ) && ( state & FALL ) == 0 ) ? RUN : state;
+		state |= entity.has( GunShootStateComponent.class ) ? SHOOT : 0;
 
 
 		int frame = 0;
-		if ( state == RUN ) {
+		if (( state | SHOOT ) == ( RUN | SHOOT )) {
 			frame = frameComp.currentFrame();
 			frameComp.loopElapsed = ( frameComp.loopElapsed + deltaTime ) % frameComp.loopDuration();
 
