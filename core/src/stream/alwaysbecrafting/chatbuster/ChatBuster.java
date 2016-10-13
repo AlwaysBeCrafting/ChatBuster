@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
+import stream.alwaysbecrafting.chatbuster.ecs.system.BulletSpawnSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BoundingBoxPositioningSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CharacterCollisionSystem;
@@ -45,6 +46,7 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine = new GameEngine();
 
+		engine.add( new BulletSpawnSystem() );
 
 //		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );

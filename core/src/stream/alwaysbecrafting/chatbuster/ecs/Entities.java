@@ -56,7 +56,7 @@ public abstract class Entities {
 
 				new CharacterZorpStateComponent(),
 
-				new CollisionComponent( 0b1, 0b0 ),
+				new CollisionComponent( 0b1, 0b100 ),
 
 				new TransformComponent(),
 				new ColorDrawComponent( 0xff00ff00 ),
@@ -107,6 +107,26 @@ public abstract class Entities {
 				new VelocityComponent( 14 * headingSign, 0 ),
 
 				new CollisionComponent( 0b10, 0b10 ),
+
+				new BoundingBoxComponent( 16, 10, 8, 5 ),
+				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),
+
+				new LifespanComponent( 1 ),
+
+				new SpriteComponent( "bullet.png", 8, 8 ),
+				new ColorDrawComponent() );
+	}
+
+	//--------------------------------------------------------------------------
+
+	public static Entity makeEnemyBullet( int x, int y, int heading ) {
+		int headingSign = heading > 0 ? 1 : ( heading < 0 ? -1 : 0 );
+
+		return new Entity(
+				new PositionComponent( x, y ),
+				new VelocityComponent( 14 * headingSign, 0 ),
+
+				new CollisionComponent( 0b100, 0b0 ),
 
 				new BoundingBoxComponent( 16, 10, 8, 5 ),
 				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),
