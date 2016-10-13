@@ -15,7 +15,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.render.ColorDrawComponen
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.FrameAnimationComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.SpriteComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.TransformComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.ZorpComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.LifespanComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.stats.DamageComponent;
@@ -56,7 +56,7 @@ public abstract class Entities {
 				new BoundingBoxComponent( 16, 23, 7, 0 ),
 				new HeadingComponent( HEADING_RIGHT ),
 
-				new CharacterZorpStateComponent(),
+				new ZorpComponent(),
 
 				new CollisionComponent( 0b1, 0b100 ),
 				new HealthComponent( 10 ),

@@ -1,17 +1,10 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component.state;
 
 //==============================================================================
-public class CharacterZorpStateComponent {
+public class HitstunComponent {
 	//--------------------------------------------------------------------------
 
-	public static final int IN = 0;
-	public static final int OUT = 1;
-
-	//--------------------------------------------------------------------------
-
-	public double durationRemaining = 1;
-
-	public int direction = IN;
+	public double durationRemaining = 0.5;
 
 	//--------------------------------------------------------------------------
 }
