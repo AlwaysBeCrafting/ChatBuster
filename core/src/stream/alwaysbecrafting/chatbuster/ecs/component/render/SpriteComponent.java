@@ -25,6 +25,13 @@ public class SpriteComponent {
 
 	//--------------------------------------------------------------------------
 
+	public SpriteComponent( String path, int originX, int originY ) {
+		this( path );
+		origin.set( originX, originY );
+	}
+
+	//--------------------------------------------------------------------------
+
 	public SpriteComponent( String path, SpriteMap spriteMap ) {
 		sprite = new Sprite( new Texture( path ));
 		this.spriteMap = spriteMap;
