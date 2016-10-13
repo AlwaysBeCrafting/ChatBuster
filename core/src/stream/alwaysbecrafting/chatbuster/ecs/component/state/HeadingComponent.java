@@ -1,17 +1,21 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component.state;
 
 //==============================================================================
-public class CharacterZorpStateComponent {
+public class HeadingComponent {
 	//--------------------------------------------------------------------------
 
-	public static final int IN = 0;
-	public static final int OUT = 1;
+	public static final byte HEADING_LEFT  = -1;
+	public static final byte HEADING_RIGHT =  1;
 
 	//--------------------------------------------------------------------------
 
-	public double durationRemaining = 1;
+	public byte heading =  HEADING_RIGHT;
 
-	public int direction = IN;
+	//--------------------------------------------------------------------------
+
+	public HeadingComponent( byte heading ) {
+		this.heading = heading;
+	}
 
 	//--------------------------------------------------------------------------
 }

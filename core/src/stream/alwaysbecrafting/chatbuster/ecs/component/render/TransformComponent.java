@@ -1,17 +1,11 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component.state;
+package stream.alwaysbecrafting.chatbuster.ecs.component.render;
 
 //==============================================================================
-public class CharacterZorpStateComponent {
+public class TransformComponent {
 	//--------------------------------------------------------------------------
 
-	public static final int IN = 0;
-	public static final int OUT = 1;
-
-	//--------------------------------------------------------------------------
-
-	public double durationRemaining = 1;
-
-	public int direction = IN;
+	public int translateX;
+	public int translateY;
 
 	//--------------------------------------------------------------------------
 }

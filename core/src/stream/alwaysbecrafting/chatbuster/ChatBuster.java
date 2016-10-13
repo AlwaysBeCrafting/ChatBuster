@@ -13,7 +13,10 @@ import stream.alwaysbecrafting.chatbuster.ecs.system.physics.GravitySystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BackgroundRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BoxRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.SpriteRenderSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.state.CharacterStateSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.state.GunStateSystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
@@ -23,6 +26,8 @@ public class ChatBuster extends ApplicationAdapter {
 	private final String TOKEN;
 
 	private GameEngine engine;
+
+	private long currentTime, previousTime;
 
 	//--------------------------------------------------------------------------
 
@@ -51,6 +56,11 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new CollisionDebugSystem() );
 		engine.add( new CharacterCollisionSystem() );
 
+		engine.add( new CharacterStateSystem() );
+		engine.add( new GunStateSystem() );
+
+		engine.add( new CharacterSpriteMapSystem() );
+
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem( matrix ));
 		engine.add( new BoxRenderSystem( matrix ));
@@ -58,12 +68,18 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
 		engine.add( Entities.makePlayerCharacter( 60, 39 ));
+
+
+		currentTime = System.nanoTime();
+		previousTime = currentTime;
 	}
 
 	//--------------------------------------------------------------------------
 
 	@Override public void render() {
-		engine.update( 0 );
+		currentTime = System.nanoTime();
+		engine.update(( currentTime - previousTime ) / 1_000_000_000.0 );
+		previousTime = currentTime;
 	}
 
 	//--------------------------------------------------------------------------
