@@ -10,6 +10,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BoundingBoxPosition
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CharacterCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDebugSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDetectionSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.DamagingCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.GravitySystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BackgroundRenderSystem;
@@ -58,6 +59,7 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine.add( new CollisionDetectionSystem() );
 		engine.add( new CollisionDebugSystem() );
+		engine.add( new DamagingCollisionSystem() );
 		engine.add( new CharacterCollisionSystem() );
 
 		engine.add( new CharacterStateSystem() );
