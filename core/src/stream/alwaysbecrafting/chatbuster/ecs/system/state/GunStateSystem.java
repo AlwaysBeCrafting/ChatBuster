@@ -18,7 +18,11 @@ public class GunStateSystem extends EntitySystem {
 	//--------------------------------------------------------------------------
 
 	@Override protected void onHandleEntity( Entity entity, double deltaTime ) {
+		GunShootStateComponent shootComp = entity.get( GunShootStateComponent.class );
 
+		if ( shootComp.durationRemaning <= 0 ) entity.remove( shootComp );
+
+		shootComp.durationRemaning -= deltaTime;
 	}
 	//--------------------------------------------------------------------------
 }
