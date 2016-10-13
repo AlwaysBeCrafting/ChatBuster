@@ -19,6 +19,8 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpState
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
+import static stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent.HEADING_LEFT;
+import static stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent.HEADING_RIGHT;
 import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.FALL;
 import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.HITSTUN;
 import static stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSystem.RUN;
@@ -49,7 +51,7 @@ public abstract class Entities {
 				new VelocityComponent( 0, 0 ),
 //				new GravityComponent( 0.5f ),
 				new BoundingBoxComponent( 16, 23, 7, 0 ),
-				new HeadingComponent(),
+				new HeadingComponent( HEADING_RIGHT ),
 
 				new CharacterZorpStateComponent(),
 
@@ -92,6 +94,21 @@ public abstract class Entities {
 				new BoundingBoxComponent( width, height, 0, 0 ),
 				new ColorDrawComponent( 0xffffffff ),
 				new CollisionComponent( 0b1 ));
+	}
+
+	//--------------------------------------------------------------------------
+
+	public static Entity makeCharacterBullet( int x, int y, int heading ) {
+		int headingSign = heading > 0 ? 1 : ( heading < 0 ? -1 : 0 );
+
+		return new Entity(
+				new PositionComponent( x, y ),
+				new VelocityComponent( 14 * headingSign, 0 ),
+
+				new BoundingBoxComponent( 16, 10, 8, 5 ),
+				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),
+
+				new SpriteComponent( "bullet.png", 8, 8 ));
 	}
 
 	//--------------------------------------------------------------------------
