@@ -18,6 +18,8 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.render.TransformComponen
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.LifespanComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.stats.DamageComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.stats.HealthComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
 import static stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent.HEADING_LEFT;
@@ -57,6 +59,7 @@ public abstract class Entities {
 				new CharacterZorpStateComponent(),
 
 				new CollisionComponent( 0b1, 0b100 ),
+				new HealthComponent( 10 ),
 
 				new TransformComponent(),
 				new ColorDrawComponent( 0xff00ff00 ),
@@ -99,18 +102,17 @@ public abstract class Entities {
 
 	//--------------------------------------------------------------------------
 
-	public static Entity makeCharacterBullet( int x, int y, int heading ) {
+	public static Entity makeBullet( int x, int y, int heading ) {
 		int headingSign = heading > 0 ? 1 : ( heading < 0 ? -1 : 0 );
 
 		return new Entity(
 				new PositionComponent( x, y ),
 				new VelocityComponent( 14 * headingSign, 0 ),
 
-				new CollisionComponent( 0b10, 0b10 ),
-
 				new BoundingBoxComponent( 16, 10, 8, 5 ),
 				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),
 
+				new DamageComponent( 1 ),
 				new LifespanComponent( 1 ),
 
 				new SpriteComponent( "bullet.png", 8, 8 ),
@@ -119,22 +121,18 @@ public abstract class Entities {
 
 	//--------------------------------------------------------------------------
 
+	public static Entity makeCharacterBullet( int x, int y, int heading ) {
+		Entity bullet = makeBullet( x, y, heading );
+		bullet.add( new CollisionComponent( 0b10, 0b10 ));
+		return bullet;
+	}
+
+	//--------------------------------------------------------------------------
+
 	public static Entity makeEnemyBullet( int x, int y, int heading ) {
-		int headingSign = heading > 0 ? 1 : ( heading < 0 ? -1 : 0 );
-
-		return new Entity(
-				new PositionComponent( x, y ),
-				new VelocityComponent( 14 * headingSign, 0 ),
-
-				new CollisionComponent( 0b100, 0b0 ),
-
-				new BoundingBoxComponent( 16, 10, 8, 5 ),
-				new HeadingComponent( heading < 0 ? HEADING_LEFT : HEADING_RIGHT ),
-
-				new LifespanComponent( 1 ),
-
-				new SpriteComponent( "bullet.png", 8, 8 ),
-				new ColorDrawComponent() );
+		Entity bullet = makeBullet( x, y, heading );
+		bullet.add( new CollisionComponent( 0b100, 0b0 ));
+		return bullet;
 	}
 
 	//--------------------------------------------------------------------------
