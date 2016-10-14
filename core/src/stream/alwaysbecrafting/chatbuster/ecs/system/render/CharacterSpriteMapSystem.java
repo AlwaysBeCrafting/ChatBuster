@@ -44,12 +44,11 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 		FrameAnimationComponent frameComp = entity.get( FrameAnimationComponent.class );
 		byte state = 0;
 
-		state = entity.has( HitstunComponent.class ) ? HITSTUN : state;
-		state = entity.has( ZorpComponent.class ) ? ZORP : state;
+		state = entity.get( VelocityComponent.class ).h != 0 ? RUN     : state;
+		state = entity.has( HitstunComponent.class )         ? HITSTUN : state;
+		state = entity.has( ZorpComponent.class )            ? ZORP    : state;
 
-		state |= entity.has( GravityComponent.class ) ? FALL : 0;
-
-		state = (( entity.get( VelocityComponent.class ).h != 0 ) && ( state & FALL ) == 0 ) ? RUN : state;
+		state |= entity.has( GravityComponent.class )       ? FALL  : 0;
 		state |= entity.has( GunShootStateComponent.class ) ? SHOOT : 0;
 
 
@@ -60,8 +59,12 @@ public class CharacterSpriteMapSystem extends EntitySystem {
 
 		} else frameComp.loopElapsed = 0;
 
+		try {
+			spriteComp.spriteMap.applyRegion( spriteComp.sprite, state, frame );
 
-		spriteComp.spriteMap.applyRegion( spriteComp.sprite, state, frame );
+		} catch ( NullPointerException e ) {
+			throw new RuntimeException( "state: " + state, e );
+		}
 	}
 
 	//--------------------------------------------------------------------------

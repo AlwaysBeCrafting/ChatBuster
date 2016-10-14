@@ -1,10 +1,12 @@
 package stream.alwaysbecrafting.chatbuster.ecs.system.state;
 
+import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.render.TransformComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.GunChargeStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.GunShootStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.HitstunComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.ZorpComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.stats.HealthComponent;
-import stream.alwaysbecrafting.chatbuster.util.Log;
 import stream.alwaysbecrafting.flare.Entity;
 import stream.alwaysbecrafting.flare.EntitySystem;
 
@@ -16,6 +18,7 @@ public class CharacterStateSystem extends EntitySystem {
 
 	@Override protected boolean acceptEntity( Entity entity ) {
 		return entity.hasAll(
+				VelocityComponent.class,
 				TransformComponent.class,
 				HealthComponent.class );
 	}
@@ -36,6 +39,10 @@ public class CharacterStateSystem extends EntitySystem {
 
 		} else if ( entity.get( HealthComponent.class ).damageReceived > 0 ) {
 			entity.add( new HitstunComponent() );
+			entity.get( VelocityComponent.class ).h = 0;
+			entity.get( VelocityComponent.class ).v = 0;
+			entity.remove( GunShootStateComponent.class );
+			entity.remove( GunChargeStateComponent.class );
 		}
 
 

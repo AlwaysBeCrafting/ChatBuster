@@ -44,11 +44,15 @@ public abstract class Entities {
 		spriteMap.mapCell( SHOOT,        2, 0 );
 		spriteMap.mapCell( FALL | SHOOT, 3, 0 );
 
-		spriteMap.mapCell( HITSTUN, 0, 1    );
-		spriteMap.mapRow(  ZORP,    1, 1, 3 );
+		spriteMap.mapCell( HITSTUN,        0, 1 );
+		spriteMap.mapCell( HITSTUN | FALL, 0, 1 );
 
-		spriteMap.mapRow( RUN,         0, 2, 4 );
-		spriteMap.mapRow( RUN | SHOOT, 0, 3, 4 );
+		spriteMap.mapRow( ZORP, 1, 1, 3 );
+
+		spriteMap.mapRow(  RUN,                0, 2, 4 );
+		spriteMap.mapRow(  RUN | SHOOT,        0, 3, 4 );
+		spriteMap.mapCell( RUN | FALL,         3, 0    );
+		spriteMap.mapCell( RUN | FALL | SHOOT, 3, 0    );
 
 		return new Entity(
 				new PositionComponent( x, y ),
