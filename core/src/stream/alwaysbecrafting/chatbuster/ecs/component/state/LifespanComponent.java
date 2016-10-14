@@ -1,19 +1,15 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component.logic;
+package stream.alwaysbecrafting.chatbuster.ecs.component.state;
 
 //==============================================================================
-public class DamageComponent {
+public class LifespanComponent {
 	//--------------------------------------------------------------------------
 
-	public int damage;
-
-	//--------------------------------------------------------------------------
-
-	public DamageComponent() {}
+	public double timeRemaining;
 
 	//--------------------------------------------------------------------------
 
-	public DamageComponent( int damage ) {
-		this.damage = damage;
+	public LifespanComponent( double timeRemaining ) {
+		this.timeRemaining = timeRemaining;
 	}
 
 	//--------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 package stream.alwaysbecrafting.chatbuster.ecs.component.state;
 
 //==============================================================================
-public class CharacterHitstunStateComponent {
+public class HitstunComponent {
 	//--------------------------------------------------------------------------
 
 	public double durationRemaining = 0.5;

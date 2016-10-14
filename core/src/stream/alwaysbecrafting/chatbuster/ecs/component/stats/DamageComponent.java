@@ -1,17 +1,16 @@
-package stream.alwaysbecrafting.chatbuster.ecs.component.state;
+package stream.alwaysbecrafting.chatbuster.ecs.component.stats;
 
 //==============================================================================
-public class CharacterZorpStateComponent {
+public class DamageComponent {
 	//--------------------------------------------------------------------------
 
-	public static final int IN = 0;
-	public static final int OUT = 1;
+	public int damage;
 
 	//--------------------------------------------------------------------------
 
-	public double durationRemaining = 1;
-
-	public int direction = IN;
+	public DamageComponent( int damage ) {
+		this.damage = damage;
+	}
 
 	//--------------------------------------------------------------------------
 }

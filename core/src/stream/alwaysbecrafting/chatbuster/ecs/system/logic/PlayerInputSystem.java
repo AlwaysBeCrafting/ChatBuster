@@ -7,8 +7,8 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.logic.PlayerControllerCo
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.GravityComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.PositionComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.physics.VelocityComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterHitstunStateComponent;
-import stream.alwaysbecrafting.chatbuster.ecs.component.state.CharacterZorpStateComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.HitstunComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.state.ZorpComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.GunShootStateComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.flare.Entity;
@@ -26,8 +26,8 @@ public class PlayerInputSystem extends EntitySystem {
 				HeadingComponent.class )
 
 		&& entity.hasNone(
-				CharacterHitstunStateComponent.class,
-				CharacterZorpStateComponent.class );
+				HitstunComponent.class,
+				ZorpComponent.class );
 	}
 
 	//--------------------------------------------------------------------------

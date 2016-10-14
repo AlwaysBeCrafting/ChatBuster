@@ -4,11 +4,14 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.math.Matrix4;
 
 import stream.alwaysbecrafting.chatbuster.ecs.Entities;
+import stream.alwaysbecrafting.chatbuster.ecs.system.BulletSpawnSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BoundingBoxPositioningSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BulletCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CharacterCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDebugSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDetectionSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.DamagingCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.GravitySystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.MovementSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.BackgroundRenderSystem;
@@ -17,6 +20,8 @@ import stream.alwaysbecrafting.chatbuster.ecs.system.render.CharacterSpriteMapSy
 import stream.alwaysbecrafting.chatbuster.ecs.system.render.SpriteRenderSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.state.CharacterStateSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.state.GunStateSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.state.LifespanSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.stats.DamageSystem;
 import stream.alwaysbecrafting.flare.GameEngine;
 
 //==============================================================================
@@ -44,6 +49,7 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine = new GameEngine();
 
+		engine.add( new BulletSpawnSystem() );
 
 //		engine.add( new ChatSpawnerSystem( "alwaysbecrafting", TOKEN ));
 		engine.add( new PlayerInputSystem() );
@@ -54,16 +60,22 @@ public class ChatBuster extends ApplicationAdapter {
 
 		engine.add( new CollisionDetectionSystem() );
 		engine.add( new CollisionDebugSystem() );
+		engine.add( new DamagingCollisionSystem() );
 		engine.add( new CharacterCollisionSystem() );
+		engine.add( new BulletCollisionSystem() );
 
 		engine.add( new CharacterStateSystem() );
 		engine.add( new GunStateSystem() );
+
+		engine.add( new DamageSystem() );
 
 		engine.add( new CharacterSpriteMapSystem() );
 
 		engine.add( new BackgroundRenderSystem() );
 		engine.add( new SpriteRenderSystem( matrix ));
 		engine.add( new BoxRenderSystem( matrix ));
+
+		engine.add( new LifespanSystem() );
 
 
 		engine.add( Entities.makeWall( 0, 0, 320, 40 ));
