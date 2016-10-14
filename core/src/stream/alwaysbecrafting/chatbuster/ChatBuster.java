@@ -7,6 +7,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.Entities;
 import stream.alwaysbecrafting.chatbuster.ecs.system.BulletSpawnSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.logic.PlayerInputSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BoundingBoxPositioningSystem;
+import stream.alwaysbecrafting.chatbuster.ecs.system.physics.BulletCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CharacterCollisionSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDebugSystem;
 import stream.alwaysbecrafting.chatbuster.ecs.system.physics.CollisionDetectionSystem;
@@ -61,6 +62,7 @@ public class ChatBuster extends ApplicationAdapter {
 		engine.add( new CollisionDebugSystem() );
 		engine.add( new DamagingCollisionSystem() );
 		engine.add( new CharacterCollisionSystem() );
+		engine.add( new BulletCollisionSystem() );
 
 		engine.add( new CharacterStateSystem() );
 		engine.add( new GunStateSystem() );

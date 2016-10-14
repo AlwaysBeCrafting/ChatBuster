@@ -20,6 +20,7 @@ import stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.state.LifespanComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.stats.DamageComponent;
 import stream.alwaysbecrafting.chatbuster.ecs.component.stats.HealthComponent;
+import stream.alwaysbecrafting.chatbuster.ecs.component.stats.PierceComponent;
 import stream.alwaysbecrafting.flare.Entity;
 
 import static stream.alwaysbecrafting.chatbuster.ecs.component.state.HeadingComponent.HEADING_LEFT;
@@ -114,6 +115,7 @@ public abstract class Entities {
 
 				new DamageComponent( 1 ),
 				new LifespanComponent( 1 ),
+				new PierceComponent( 1 ),
 
 				new SpriteComponent( "bullet.png", 8, 8 ),
 				new ColorDrawComponent() );
